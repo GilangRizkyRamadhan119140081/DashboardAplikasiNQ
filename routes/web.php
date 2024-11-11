@@ -10,6 +10,7 @@ Route::get('/', function () {
 
 Route::get('/user', [UserController::class, 'UserIndex'])->name('user.index');
 Route::get('/paket', [PaketController::class, 'PaketIndex'])->name('paket.index');
+Route::get('/produk', [ProdukController::class, 'ProdukIndex'])->name('produk.index');
 Route::get('/voucher', [VoucherController::class, 'VoucherIndex'])->name('voucher.index');
 Route::get('/artikel', [ArtikelController::class, 'ArtikelIndex'])->name('artikel.index');
 Route::get('/quote', [QuoteController::class, 'QuoteIndex'])->name('quote.index');
