@@ -2,7 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
-
+use App\Http\Controllers\Admin\PaketController;
+use App\Http\Controllers\Admin\ProdukController;
+use App\Http\Controllers\Admin\VoucherController;
+use App\Http\Controllers\Admin\ArtikelController;
+use App\Http\Controllers\Admin\QuoteController;
+use App\Http\Controllers\Admin\KonsultasiController;
+use App\Http\Controllers\Admin\SertifikatController;
+use App\Http\Controllers\Admin\TrainingController;
 
 Route::get('/', function () {
     return view('admin.layouts.index');
