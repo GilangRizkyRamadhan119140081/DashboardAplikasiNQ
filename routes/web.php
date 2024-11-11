@@ -11,7 +11,6 @@ use App\Http\Controllers\Admin\KonsultasiController;
 use App\Http\Controllers\Admin\SertifikatController;
 use App\Http\Controllers\Admin\TrainingController;
 
-
 Route::get('/', function () {
     return view('admin.layouts.index');
 });
