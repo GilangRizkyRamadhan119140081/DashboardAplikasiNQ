@@ -290,7 +290,7 @@
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="{{ url('user') }}">List</a></li>
-                            <li><a href="index-2.html">Role</a></li>
+                            <li><a href="{{ url('role') }}">Role</a></li>
                         </ul>
 
                     </li>
@@ -300,8 +300,8 @@
                             <span class="nav-text">Paket</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="app-profile.html">List</a></li>
-                            <li><a href="post-details.html">Create Paket</a></li>
+                            <li><a href="{{ url('paket') }}">List</a></li>
+                            <li><a href="{{ url('paketCreate') }}">Create Paket</a></li>
                         </ul>
                     </li>
                     <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
@@ -309,8 +309,8 @@
                             <span class="nav-text">Produk</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="chart-flot.html">List</a></li>
-                            <li><a href="chart-morris.html">Create Produk</a></li>
+                            <li><a href="{{ url('produk') }}">List</a></li>
+                            <li><a href="{{ url('produkCreate') }}">Create Produk</a></li>
                         </ul>
                     </li>
                     <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
@@ -318,9 +318,9 @@
                             <span class="nav-text">Artikel</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="ui-accordion.html">List</a></li>
-                            <li><a href="ui-alert.html">Create</a></li>
-                            <li><a href="ui-badge.html">Draft</a></li>
+                            <li><a href="{{ url('artikel') }}">List</a></li>
+                            <li><a href="{{ url('artikelCreate') }}">Create</a></li>
+                            <li><a href="{{ url('artikelDraft') }}">Draft</a></li>
                         </ul>
                     </li>
                     <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
@@ -328,8 +328,8 @@
                             <span class="nav-text">Quote</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="ui-accordion.html">List</a></li>
-                            <li><a href="ui-alert.html">Create</a></li>
+                            <li><a href="{{ url('quote') }}">List</a></li>
+                            <li><a href="{{ url('quoteCreate') }}">Create</a></li>
                         </ul>
                     </li>
                     <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
@@ -337,22 +337,25 @@
                             <span class="nav-text">Voucher</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="uc-select2.html">List</a></li>
-                            <li><a href="uc-nestable.html">Create Voucher</a></li>
+                            <li><a href="{{ url('voucher') }}">List</a></li>
+                            <li><a href="{{ url('voucherCreate') }}">Create Voucher</a></li>
                         </ul>
                     </li>
                     <li><a href="widget-basic.html" class="" aria-expanded="false">
                             <i class="fas fa-user-check"></i>
                             <span class="nav-text">Konsultasi</span>
                         </a>
+                        <ul aria-expanded="false">
+                            <li><a href="{{ url('konsultasi') }}">List</a></li>
+                        </ul>
                     </li>
                     <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
                             <i class="fas fa-file-alt"></i>
                             <span class="nav-text">NQ Certificate</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="form-element.html">TOT</a></li>
-                            <li><a href="form-wizard.html">Training</a></li>
+                            <li><a href="{{ url('sertifikat') }}">TOT</a></li>
+                            <li><a href="{{ url('sertifikatTraining') }}">Training</a></li>
                         </ul>
                     </li>
                     <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
@@ -360,8 +363,8 @@
                             <span class="nav-text">Training</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="table-bootstrap-basic.html">Trainer</a></li>
-                            <li><a href="table-datatable-basic.html">Reader</a></li>
+                            <li><a href="{{ url('training') }}">Trainer</a></li>
+                            <li><a href="{{ url('trainingReader') }}">Reader</a></li>
                         </ul>
                     </li>
                     <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
