@@ -35,14 +35,14 @@
                             <th>Aksi</th>
                         </tr>
                     </thead>
-                    {{-- <tbody>
-                        @foreach ($produks as $produk)
+                    <tbody>
+                        @foreach ($produk as $produk)
                             <tr>
                                 <td>{{ $produk->id }}</td>
                                 <td>{{ $produk->kode_produk }}</td>
                                 <td>{{ $produk->kategori }}</td>
                                 <td>{{ $produk->nama_produk }}</td>
-                                <td>{{ $produk->detail }}</td>
+                                <td>{{ Str::words($produk->detail ?? '-', 10, '...') }}</td>
                                 <td>{{ $produk->harga }}</td>
                                 <td>{{ $produk->pemilik }}</td>
                                 <td>
@@ -62,7 +62,7 @@
                                 </td>
                             </tr>
                         @endforeach
-                    </tbody> --}}
+                    </tbody>
                 </table>
             </div>
         </div> <!-- Akhir div membungkus tabel -->

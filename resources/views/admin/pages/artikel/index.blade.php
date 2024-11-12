@@ -27,12 +27,12 @@
                             <th>Aksi</th>
                         </tr>
                     </thead>
-                    {{-- <tbody>
-                        @foreach ($artikels as $artikel)
+                    <tbody>
+                        @foreach ($artikel as $artikel)
                             <tr>
                                 <td>{{ $artikel->id }}</td>
                                 <td>{{ $artikel->judul }}</td>
-                                <td>{{ $artikel->isi }}</td>
+                                <td>{{ Str::words($artikel->isi ?? '-', 10, '...') }}</td>
                                 <td>{{ $artikel->id_user }}</td>
                                 <td>
                                     @if ($artikel->image)
@@ -69,7 +69,7 @@
                                 </div></td>
                             </tr>
                         @endforeach
-                    </tbody> --}}
+                    </tbody>
                 </table>
             </div>
         </div> <!-- Akhir div membungkus tabel -->

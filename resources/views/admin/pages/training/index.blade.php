@@ -1,13 +1,13 @@
 @extends('admin.layouts.index')
 
-@section('title', 'User Management')
+@section('title', 'Trainer Management')
 
 @section('content')
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">User List</h4>
+                    <h4 class="card-title">Trainer List</h4>
                     {{-- <a href="{{ route('admin.user.create') }}" class="btn btn-primary">Add User</a> --}}
                 </div>
                 <div class="card-body">
