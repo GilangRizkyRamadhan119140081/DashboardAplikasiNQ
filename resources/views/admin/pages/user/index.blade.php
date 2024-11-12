@@ -38,7 +38,6 @@
                                         <td>{{ $user->referal_from ?? '-' }}</td>
                                         <td>{{ $user->kode_paket ?? '-' }}</td>
                                         <td>
-                                            <a href="#" class="btn btn-info btn-sm">View</a>
                                             <a href="#" class="btn btn-warning btn-sm">Edit</a>
                                             <form action="#" method="POST" style="display:inline;">
                                                 @csrf
