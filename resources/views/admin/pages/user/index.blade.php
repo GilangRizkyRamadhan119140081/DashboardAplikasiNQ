@@ -27,7 +27,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @forelse ($users as $user)
+                                @forelse ($users as $user)
                                     <tr>
                                         <td>{{ $user->id }}</td>
                                         <td>{{ $user->role_id }}</td>
@@ -52,7 +52,7 @@
                                     <tr>
                                         <td colspan="9" class="text-center">No Users Found</td>
                                     </tr>
-                                @endforelse --}}
+                                @endforelse
                             </tbody>
                         </table>
                     </div>
