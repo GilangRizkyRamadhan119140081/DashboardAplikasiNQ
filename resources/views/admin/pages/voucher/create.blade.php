@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container mt-5">
-        <h2>Tambah Role Baru</h2>
+        <h2>Tambah Voucher Baru</h2>
         <form action="{{ route('role.store') }}" method="POST">
             @csrf
 

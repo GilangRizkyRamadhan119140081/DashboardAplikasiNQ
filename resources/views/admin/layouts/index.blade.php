@@ -320,7 +320,7 @@
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="{{ url('produk') }}">List</a></li>
-                            <li><a href="{{ url('produkCreate') }}">Create Produk</a></li>
+                            <li><a href="{{ url('/produk/create') }}">Create Produk</a></li>
                         </ul>
                     </li>
                     <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
@@ -329,7 +329,7 @@
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="{{ url('artikel') }}">List</a></li>
-                            <li><a href="{{ url('artikelCreate') }}">Create</a></li>
+                            <li><a href="{{ url('/artikel/create') }}">Create</a></li>
                             <li><a href="{{ url('artikelDraft') }}">Draft</a></li>
                         </ul>
                     </li>
@@ -339,7 +339,7 @@
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="{{ url('quote') }}">List</a></li>
-                            <li><a href="{{ url('quoteCreate') }}">Create</a></li>
+                            <li><a href="{{ url('/quote/create') }}">Create</a></li>
                         </ul>
                     </li>
                     <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
@@ -348,7 +348,7 @@
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="{{ url('voucher') }}">List</a></li>
-                            <li><a href="{{ url('voucherCreate') }}">Create Voucher</a></li>
+                            <li><a href="{{ url('/voucher/create') }}">Create Voucher</a></li>
                         </ul>
                     </li>
                     <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">

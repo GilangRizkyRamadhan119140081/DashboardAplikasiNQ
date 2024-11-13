@@ -11,4 +11,8 @@ class QuoteController extends Controller
     {
         return view('admin.pages.quote.index'); // Sesuaikan dengan view yang ada
     }
+    public function QuoteCreate()
+    {
+        return view('admin.pages.quote.create');
+    }
 }

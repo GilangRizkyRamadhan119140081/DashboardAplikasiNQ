@@ -11,7 +11,7 @@
 
     <!-- Form -->
     <div class="bg-white p-3 rounded shadow-sm">
-        <form action="{{ route('produk.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             
             <div class="row">
