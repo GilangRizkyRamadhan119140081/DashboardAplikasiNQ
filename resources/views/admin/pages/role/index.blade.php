@@ -1,6 +1,6 @@
 @extends('admin.layouts.index')
 
-@section('title', 'User Management')
+@section('title', 'Role Management')
 
 @section('content')
     <div class="row">
@@ -16,15 +16,18 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
+                                    <th>Role ID</th>
                                     <th>Name</th>
-                                    <th>Date</th>
-                                    <th>Category</th>
-                                    <th>Created At</th>
-                                    <th>Update At</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Referral Code</th>
+                                    <th>Referral From</th>
+                                    <th>Package Code</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
-                            {{-- <tbody>
-                                @forelse ($users as $user)
+                            <tbody>
+                                {{-- @forelse ($users as $user)
                                     <tr>
                                         <td>{{ $user->id }}</td>
                                         <td>{{ $user->role_id }}</td>
@@ -35,7 +38,6 @@
                                         <td>{{ $user->referal_from ?? '-' }}</td>
                                         <td>{{ $user->kode_paket ?? '-' }}</td>
                                         <td>
-                                            <a href="#" class="btn btn-info btn-sm">View</a>
                                             <a href="#" class="btn btn-warning btn-sm">Edit</a>
                                             <form action="#" method="POST" style="display:inline;">
                                                 @csrf
@@ -49,8 +51,8 @@
                                     <tr>
                                         <td colspan="9" class="text-center">No Users Found</td>
                                     </tr>
-                                @endforelse
-                            </tbody> --}}
+                                @endforelse --}}
+                            </tbody>
                         </table>
                     </div>
                 </div>

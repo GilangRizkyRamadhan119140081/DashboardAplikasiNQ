@@ -18,5 +18,9 @@ class PaketController extends Controller
 
     return view('admin.pages.paket.index', compact('detail_paket'));
 }
+public function PaketCreate()
+    {
+        return view('admin.pages.paket.create');
+    }
 
 }

@@ -290,7 +290,17 @@
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="{{ url('user') }}">List</a></li>
+                            <li><a href="{{ url('/user/create') }}">Create User</a></li>
+                        </ul>
+
+                    </li>
+                    <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                            <i class="fas fa-users"></i>
+                            <span class="nav-text">Role</span>
+                        </a>
+                        <ul aria-expanded="false">
                             <li><a href="{{ url('role') }}">Role</a></li>
+                            <li><a href="{{ url('/role/create') }}">Create Role</a></li>
                         </ul>
 
                     </li>
@@ -301,7 +311,7 @@
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="{{ url('paket') }}">List</a></li>
-                            <li><a href="{{ url('paketCreate') }}">Create Paket</a></li>
+                            <li><a href="{{ url('/paket/create') }}">Create Paket</a></li>
                         </ul>
                     </li>
                     <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
@@ -341,7 +351,7 @@
                             <li><a href="{{ url('voucherCreate') }}">Create Voucher</a></li>
                         </ul>
                     </li>
-                    <li><a href="widget-basic.html" class="" aria-expanded="false">
+                    <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
                             <i class="fas fa-user-check"></i>
                             <span class="nav-text">Konsultasi</span>
                         </a>
