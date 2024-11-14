@@ -121,7 +121,7 @@
                 <label for="expired" class="form-label">Tanggal Expired</label>
                 <input type="date" class="form-control" id="expired" name="expired">
             </div>
-
+            
             <!-- Submit Button -->
             <button type="submit" class="btn btn-primary">Simpan Voucher</button>
         </form>
