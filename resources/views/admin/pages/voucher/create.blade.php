@@ -1,27 +1,34 @@
 @extends('admin.layouts.index')
 
-@section('title', 'Tambah Role')
+@section('title', 'Tambah Voucher')
 
 @section('content')
     <div class="container mt-5">
-        <h2>Tambah Role Baru</h2>
-        <form action="{{ route('role.store') }}" method="POST">
+        <h2>Tambah Voucher Baru</h2>
+        <form action="{{ route('voucher.store') }}" method="POST">
             @csrf
 
             <!-- Role ID -->
             <div class="mb-3">
-                <label for="role_id" class="form-label">Role ID</label>
-                <input type="number" class="form-control" id="role_id" name="role_id" placeholder="Masukkan Role ID">
+                <label for="voucher_id" class="form-label">Voucher ID</label>
+                <input type="number" class="form-control" id="voucher_id" name="voucher_id" placeholder="Masukkan Voucher ID">
             </div>
 
-            <!-- Nama -->
+            <!-- Nama Voucher-->
             <div class="mb-3">
-                <label for="name" class="form-label">Nama</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Masukkan nama"
+                <label for="name" class="form-label">Nama Voucher</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Masukkan nama Voucher"
                     required>
-            </div>
+            </div> 
 
-            <!-- Email -->
+            <!-- Durasi Voucher-->
+            <div class="mb-3">
+                <label for="durasi" class="form-label">Durasi Voucher</label>
+                <input type="number" class="form-control" id="durasi" name="durasi" placeholder="Masukkan Durasi Voucher"
+                    required>
+            </div> 
+
+            {{-- <!-- Email -->
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan email"
@@ -93,21 +100,21 @@
                 <label for="image" class="form-label">Image URL</label>
                 <input type="text" class="form-control" id="image" name="image"
                     placeholder="Masukkan URL gambar (opsional)">
-            </div>
+            </div>  --}}
 
             <!-- Kode Voucher -->
             <div class="mb-3">
                 <label for="kode_voucher" class="form-label">Kode Voucher</label>
                 <input type="text" class="form-control" id="kode_voucher" name="kode_voucher"
-                    placeholder="Masukkan Kode Voucher (opsional)">
+                    placeholder="Masukkan Kode Voucher">
             </div>
 
-            <!-- Kode Paket -->
+            {{-- <!-- Kode Paket -->
             <div class="mb-3">
                 <label for="kode_paket" class="form-label">Kode Paket</label>
                 <input type="text" class="form-control" id="kode_paket" name="kode_paket"
                     placeholder="Masukkan Kode Paket (opsional)">
-            </div>
+            </div> --}}
 
             <!-- Tanggal Expired -->
             <div class="mb-3">
@@ -116,7 +123,7 @@
             </div>
 
             <!-- Submit Button -->
-            <button type="submit" class="btn btn-primary">Simpan User</button>
+            <button type="submit" class="btn btn-primary">Simpan Voucher</button>
         </form>
     </div>
 @endsection

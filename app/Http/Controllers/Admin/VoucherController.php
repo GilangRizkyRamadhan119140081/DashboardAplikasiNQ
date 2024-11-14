@@ -11,4 +11,8 @@ class VoucherController extends Controller
     {
         return view('admin.pages.voucher.index'); // Sesuaikan dengan view yang ada
     }
+    public function VoucherCreate()
+    {
+        return view('admin.pages.voucher.create');
+    }
 }
