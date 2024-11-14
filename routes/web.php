@@ -43,11 +43,11 @@ Route::post('/voucher', [ProdukController::class, 'VoucherCreate'])->name('vouch
 
 Route::get('/artikel', [ArtikelController::class, 'ArtikelIndex'])->name('artikel.index');
 Route::get('/artikel/create', [ArtikelController::class, 'ArtikelCreate'])->name('artikel.create');
-Route::get('/ckEditorUpload', [ArtikelController::class, 'ckEditorUpload'])->name('ckEditorUpload');
+Route::post('/ckEditorUpload', [ArtikelController::class, 'ckEditorUpload'])->name('ckEditorUpload');
 
 Route::get('/quote', [QuoteController::class, 'QuoteIndex'])->name('quote.index');
 Route::get('/quote/create', [QuoteController::class, 'QuoteCreate'])->name('quote.create');
-Route::get('/quote', [QuoteController::class, 'QuoteCreate'])->name('quote.store');
+Route::post('/quote', [QuoteController::class, 'QuoteCreate'])->name('quote.store');
 
 Route::get('/konsultasi', [KonsultasiController::class, 'KonsultasiIndex'])->name('konsultasi.index');
 Route::get('/sertifikat', [SertifikatController::class, 'SertifikatIndex'])->name('sertifikat.index');

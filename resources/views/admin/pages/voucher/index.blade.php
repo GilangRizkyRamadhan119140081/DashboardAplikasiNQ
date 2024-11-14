@@ -23,19 +23,20 @@
                                 <th>ID Paket </th>
                                 <th>Created At</th>
                                 <th>Update At</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody> 
-                            @forelse ($voucher as $user)
+                            @forelse ($voucher as $item)
                                 <tr>
-                                    <td>{{ $user->id }}</td>
-                                    <td>{{ $user->user_id }}</td>
-                                    <td>{{ $user->user_used }}</td>
-                                    <td>{{ $user->voucher_code  }}</td>
-                                    <td>{{ $user->voucher_expire ?? '-' }}</td>
-                                    <td>{{ $user->paket_id ?? '-' }}</td>
-                                    <td>{{ $user->created_at ?? '-' }}</td>
-                                    <td>{{ $user->updated_at ?? '-' }}</td>
+                                    <td>{{ $item->id }}</td>
+                                    <td>{{ $item->user_id }}</td>
+                                    <td>{{ $item->user_used }}</td>
+                                    <td>{{ $item->voucher_code  }}</td>
+                                    <td>{{ $item->voucher_expire ?? '-' }}</td>
+                                    <td>{{ $item->paket_id ?? '-' }}</td>
+                                    <td>{{ $item->created_at ?? '-' }}</td>
+                                    <td>{{ $item->updated_at ?? '-' }}</td>
                                     <td>
                                         <a href="#" class="btn btn-info btn-sm">View</a>
                                         <a href="#" class="btn btn-warning btn-sm">Edit</a>
@@ -54,6 +55,10 @@
                             @endforelse
                         </tbody>
                     </table>
+                    <div class="d-flex justify-content-center">{{ $voucher->links() }}</div>
+                    <div class="d-flex justify-content-center">
+                        Showing {{ $voucher->firstItem() }} to {{ $voucher->lastItem()+4 }} of {{ $voucher->total() }} results
+                    </div>
                 </div>
             </div>
         </div>

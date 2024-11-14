@@ -35,7 +35,7 @@
                             <th>Aksi</th>
                         </tr>
                     </thead>
-                    {{-- <tbody>
+                    <tbody>
                         @foreach ($produks as $produk)
                             <tr>
                                 <td>{{ $produk->id }}</td>
@@ -62,7 +62,7 @@
                                 </td>
                             </tr>
                         @endforeach
-                    </tbody> --}}
+                    </tbody>
                 </table>
             </div>
         </div> <!-- Akhir div membungkus tabel -->

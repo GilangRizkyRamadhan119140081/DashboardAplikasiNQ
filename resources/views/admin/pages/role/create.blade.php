@@ -16,8 +16,8 @@
 
             <!-- Nama -->
             <div class="mb-3">
-                <label for="name" class="form-label">Nama</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Masukkan nama"
+                <label for="name_role" class="form-label">Nama Role</label>
+                <input type="text" class="form-control" id="name_role" name="name_role" placeholder="Masukkan nama role"
                     required>
             </div>
 
@@ -42,13 +42,13 @@
                     placeholder="Ulangi password" required>
             </div>
 
-            <!-- Tanggal Lahir -->
+            {{-- <!-- Tanggal Lahir -->
             <div class="mb-3">
                 <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
                 <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir">
-            </div>
+            </div> --}}
 
-            <!-- Nomor HP -->
+            {{-- <!-- Nomor HP -->
             <div class="mb-3">
                 <label for="nomor_hp" class="form-label">Nomor HP</label>
                 <input type="text" class="form-control" id="nomor_hp" name="nomor_hp" placeholder="Masukkan nomor HP">
@@ -113,10 +113,10 @@
             <div class="mb-3">
                 <label for="expired" class="form-label">Tanggal Expired</label>
                 <input type="date" class="form-control" id="expired" name="expired">
-            </div>
+            </div> --}}
 
             <!-- Submit Button -->
-            <button type="submit" class="btn btn-primary">Simpan User</button>
+            <button type="submit" class="btn btn-primary">Simpan Role</button>
         </form>
     </div>
 @endsection
