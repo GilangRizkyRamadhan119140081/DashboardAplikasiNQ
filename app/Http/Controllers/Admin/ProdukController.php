@@ -11,4 +11,8 @@ class ProdukController extends Controller
     {
         return view('admin.pages.produk.index'); // Sesuaikan dengan view yang ada
     }
+    public function ProdukCreate()
+    {
+        return view('admin.pages.produk.create');
+    }
 }
