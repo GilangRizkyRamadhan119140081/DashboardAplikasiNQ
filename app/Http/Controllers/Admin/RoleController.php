@@ -11,8 +11,8 @@ class RoleController extends Controller
     // Method untuk menampilkan form create user
     public function RoleIndex()
     {
-        $roles = Roles::all();
-        return view('admin.pages.role.index',compact('roles')); // Sesuaikan dengan view yang ada
+        // $users = Users::all();
+        return view('admin.pages.role.index'); // Sesuaikan dengan view yang ada
     }
     public function RoleCreate()
     {

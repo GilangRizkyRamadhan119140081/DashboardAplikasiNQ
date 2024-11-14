@@ -8,7 +8,6 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">Paket List</h4>
-                    {{-- <a href="{{ route('admin.paket.create') }}" class="btn btn-primary">Add Paket</a> --}}
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -46,13 +45,45 @@
                                         <td>{{ Str::words($item->deskripsi6 ?? '-', 10, '...') }}</td>
                                         <td>{{ Str::words($item->deskripsi7 ?? '-', 10, '...') }}</td>
                                         <td>
-                                            <a href="#" class="btn btn-warning btn-sm">Edit</a>
-                                            <form action="#" method="POST" style="display:inline;">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm"
-                                                    onclick="return confirm('Are you sure?')">Delete</button>
-                                            </form>
+                                            <!-- Link Edit -->
+                                            <a href="{{ route('paket.edit', $item->id) }}"
+                                                class="btn btn-warning btn-sm">Edit</a>
+
+                                            <!-- Tombol Delete dengan Modal -->
+                                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                                                data-bs-target="#deleteModal{{ $item->id }}">
+                                                Delete
+                                            </button>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="deleteModal{{ $item->id }}" tabindex="-1"
+                                                aria-labelledby="deleteModalLabel{{ $item->id }}" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title"
+                                                                id="deleteModalLabel{{ $item->id }}">Konfirmasi
+                                                                Penghapusan</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Apakah Anda yakin ingin menghapus paket dengan ID
+                                                            {{ $item->id }}?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">Batal</button>
+                                                            <form action="{{ route('paket.destroy', $item->id) }}"
+                                                                method="POST" style="display:inline;">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit" class="btn btn-danger">Hapus</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                 @empty

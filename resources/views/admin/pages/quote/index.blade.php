@@ -38,7 +38,6 @@
                                         <td>{{ $quote->update_at ?? '-' }}</td>
                                         <td>{{ $quote->user_update ?? '-' }}</td>
                                         <td>
-                                            <a href="#" class="btn btn-info btn-sm">View</a>
                                             <a href="#" class="btn btn-warning btn-sm">Edit</a>
                                             <form action="#" method="POST" style="display:inline;">
                                                 @csrf
@@ -57,7 +56,8 @@
                         </table>
                         <div class="d-flex justify-content-center">{{ $quotes->links() }}</div>
                         <div class="d-flex justify-content-center">
-                            Showing {{ $quotes->firstItem() }} to {{ $quotes->lastItem() }} of {{ $quotes->total() }} results
+                            Showing {{ $quotes->firstItem() }} to {{ $quotes->lastItem() }} of {{ $quotes->total() }}
+                            results
                         </div>
                     </div>
                 </div>

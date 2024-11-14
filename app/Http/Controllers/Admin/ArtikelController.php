@@ -11,8 +11,4 @@ class ArtikelController extends Controller
     {
         return view('admin.pages.artikel.index'); // Sesuaikan dengan view yang ada
     }
-    public function ArtikelCreate()
-    {
-        return view('admin.pages.artikel.create');
-    }
 }

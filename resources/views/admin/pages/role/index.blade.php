@@ -16,21 +16,27 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
+                                    <th>Role ID</th>
                                     <th>Name</th>
-                                    <th>Role</th>
-                                    <th>Created At</th>
-                                    <th>Updated At</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Referral Code</th>
+                                    <th>Referral From</th>
+                                    <th>Package Code</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($roles as $role)
+                                {{-- @forelse ($users as $user)
                                     <tr>
-                                        <td>{{ $role->id }}</td>
-                                        <td>{{ $role->name }}</td>
-                                        <td>{{ $role->role  }}</td>
-                                        <td>{{ $role->created_at }}</td>
-                                        <td>{{ $role->updated_at ?? '-' }}</td>
+                                        <td>{{ $user->id }}</td>
+                                        <td>{{ $user->role_id }}</td>
+                                        <td>{{ $user->name }}</td>
+                                        <td>{{ $user->email }}</td>
+                                        <td>{{ $user->nomor_hp ?? '-' }}</td>
+                                        <td>{{ $user->referal_code ?? '-' }}</td>
+                                        <td>{{ $user->referal_from ?? '-' }}</td>
+                                        <td>{{ $user->kode_paket ?? '-' }}</td>
                                         <td>
                                             <a href="#" class="btn btn-warning btn-sm">Edit</a>
                                             <form action="#" method="POST" style="display:inline;">
@@ -45,7 +51,7 @@
                                     <tr>
                                         <td colspan="9" class="text-center">No Users Found</td>
                                     </tr>
-                                @endforelse
+                                @endforelse --}}
                             </tbody>
                         </table>
                     </div>
