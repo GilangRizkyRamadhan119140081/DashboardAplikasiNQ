@@ -24,6 +24,7 @@ class Users extends Authenticatable
         'role_id',
         'name',
         'email',
+        'email_verified_at',
         'password',
         'google_id',
         'tanggal_lahir',
@@ -73,8 +74,4 @@ class Users extends Authenticatable
     /**
      * Accessor for default image if null.
      */
-    public function getImageAttribute($value)
-    {
-        return $value ?? 'default.jpg';
-    }
 }

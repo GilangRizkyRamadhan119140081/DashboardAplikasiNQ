@@ -19,7 +19,11 @@ Route::get('/', function () {
 
 Route::get('/user', [UserController::class, 'UserIndex'])->name('user.index');
 Route::get('/user/create', [UserController::class, 'UserCreate'])->name('user.create');
-Route::post('/user', [UserController::class, 'UserCreate'])->name('user.store');
+Route::post('/userStore', [UserController::class, 'UserStore'])->name('user.store');
+Route::get('/user/{id}/edit', [UserController::class, 'UserEdit'])->name('user.edit');
+Route::put('/user/{id}', [UserController::class, 'UserUpdate'])->name('user.update');
+Route::delete('/user/{id}', [UserController::class, 'UserDestroy'])->name('user.destroy');
+
 
 Route::get('/role', [RoleController::class, 'RoleIndex'])->name('role.index');
 Route::get('/role/create', [RoleController::class, 'RoleCreate'])->name('role.create');
