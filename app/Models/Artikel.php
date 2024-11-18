@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Artikel extends Model
 {
@@ -12,31 +13,21 @@ class Artikel extends Model
     // Nama tabel
     protected $table = 'artikel';
 
-    // Primary keys
+    // Primary key
     protected $primaryKey = 'id';
 
-    // Tipe primary key
-    protected $keyType = 'bigint';
-
-    // Apakah primary key menggunakan auto-increment?
-    public $incrementing = false;
-
-    // Apakah timestamps (`created_at` dan `updated_at`) digunakan?
-    public $timestamps = true;
-
-    // Kolom yang dapat diisi (mass assignable)
+    // Kolom yang dapat diisi secara mass-assignment
     protected $fillable = [
-        'id',
         'judul',
         'isi',
-        'id_user ',
+        'id_user',
         'image',
         'link',
         'created_at',
         'updated_at'
     ];
 
-    // Format tanggal dan tipe data
+    // Tipe data untuk kolom yang memerlukan konversi otomatis
     protected $casts = [
         'id' => 'integer',
         'id_user' => 'integer',
@@ -44,9 +35,9 @@ class Artikel extends Model
         'updated_at' => 'datetime'
     ];
 
-    // Relasi ke tabel Paket (opsional jika tabel `paket` ada)
-    public function produk()
+    // Relasi ke tabel user (jika ada)
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(Paket::class, 'id_user', 'id');
+        return $this->belongsTo(User::class, 'id_user');
     }
 }

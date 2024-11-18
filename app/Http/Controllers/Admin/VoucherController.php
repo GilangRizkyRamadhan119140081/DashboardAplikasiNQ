@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Voucher;
+use Illuminate\Pagination\Paginator;
+
 
 class VoucherController extends Controller
 {

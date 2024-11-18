@@ -37,13 +37,28 @@ Route::put('/paket/{id}', [PaketController::class, 'PaketUpdate'])->name('paket.
 Route::delete('/paket/{id}', [PaketController::class, 'PaketDestroy'])->name('paket.destroy');
 
 Route::get('/produk', [ProdukController::class, 'ProdukIndex'])->name('produk.index');
+Route::get('/produk/create', [ProdukController::class, 'ProdukCreate'])->name('produk.create');
+Route::post('/produkStore', [ProdukController::class, 'ProdukStore'])->name('produk.store');
+Route::get('/produk/{id}/edit', [ProdukController::class, 'ProdukEdit'])->name('produk.edit');
+Route::put('/produk/{id}', [ProdukController::class, 'ProdukUpdate'])->name('produk.update');
+Route::delete('/produk/{id}', [ProdukController::class, 'ProdukDestroy'])->name('produk.destroy');
+
 Route::get('/voucher', [VoucherController::class, 'VoucherIndex'])->name('voucher.index');
 Route::get('/voucher/create', [VoucherController::class, 'VoucherCreate'])->name('voucher.create');
 Route::post('/voucher', [ProdukController::class, 'VoucherCreate'])->name('voucher.store');
+
 Route::get('/artikel', [ArtikelController::class, 'ArtikelIndex'])->name('artikel.index');
+Route::get('/artikel/create', [ArtikelController::class, 'ArtikelCreate'])->name('artikel.create');
+Route::post('/artikelStore', [ArtikelController::class, 'ArtikelStore'])->name('artikel.store');
+Route::get('/artikel/draft', [ArtikelController::class, 'ArtikelDraft'])->name('artikel.draft');
+Route::get('/artikel/{id}/edit', [ArtikelController::class, 'ArtikelEdit'])->name('artikel.edit');
+Route::put('/artikel/{id}', [ArtikelController::class, 'ArtikelUpdate'])->name('artikel.update');
+Route::delete('/artikel/{id}', [ArtikelController::class, 'ArtikelDestroy'])->name('artikel.destroy');
+
 Route::get('/quote', [QuoteController::class, 'QuoteIndex'])->name('quote.index');
 Route::get('/quote/create', [QuoteController::class, 'QuoteCreate'])->name('quote.create');
-Route::post('/quote', [QuoteController::class, 'QuoteCreate'])->name('quote.store');
+Route::post('/quoteStore', [QuoteController::class, 'QuoteStore'])->name('quote.store');
+
 Route::get('/konsultasi', [KonsultasiController::class, 'KonsultasiIndex'])->name('konsultasi.index');
 Route::get('/sertifikat', [SertifikatController::class, 'SertifikatIndex'])->name('sertifikat.index');
 Route::get('/training', [TrainingController::class, 'TrainingIndex'])->name('training.index');
