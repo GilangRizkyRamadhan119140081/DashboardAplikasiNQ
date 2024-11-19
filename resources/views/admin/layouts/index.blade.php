@@ -321,7 +321,7 @@
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="{{ url('produk') }}">List</a></li>
-                            <li><a href="{{ url('produkCreate') }}">Create Produk</a></li>
+                            <li><a href="{{ url('produk/create') }}">Create Produk</a></li>
                         </ul>
                     </li>
                     <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
