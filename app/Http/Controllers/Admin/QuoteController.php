@@ -24,6 +24,7 @@ class QuoteController extends Controller
     // Menyimpan quote baru
     public function QuoteStore(Request $request)
     {
+        
         $validated = $request->validate([
             'quote'       => 'required|string|max:500',
             'from'        => 'nullable|string|max:255',
@@ -32,14 +33,10 @@ class QuoteController extends Controller
             'user_update' => 'required|integer|exists:users,id',
         ]);
 
+        dd($validated);
+
         // Menyimpan data ke database
-        Quote::create([
-            'quote'       => $validated['quote'],
-            'from'        => $validated['from'],
-            'title'       => $validated['title'],
-            'image'       => $validated['image'],
-            'user_update' => $validated['user_update'],
-        ]);
+        Quote::create($validated);
 
         return redirect()->route('quote.index')->with('success', 'Quote successfully created!');
     }
@@ -65,13 +62,7 @@ class QuoteController extends Controller
         ]);
 
         // Update quote
-        $quote->update([
-            'quote'       => $validated['quote'],
-            'from'        => $validated['from'],
-            'title'       => $validated['title'],
-            'image'       => $validated['image'],
-            'user_update' => $validated['user_update'],
-        ]);
+        $quote->update($validated);
 
         return redirect()->route('quote.index')->with('success', 'Quote successfully updated!');
     }

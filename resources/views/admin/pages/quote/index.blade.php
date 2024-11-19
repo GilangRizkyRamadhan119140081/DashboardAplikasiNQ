@@ -8,7 +8,6 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">Quote List</h4>
-                    {{-- <a href="{{ route('admin.user.create') }}" class="btn btn-primary">Add User</a> --}}
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -38,14 +37,17 @@
                                         <td>{{ $quote->update_at ?? '-' }}</td>
                                         <td>{{ $quote->user_update ?? '-' }}</td>
                                         <td>
-                                            <a href="#" class="btn btn-warning btn-sm">Edit</a>
-                                            <form action="#" method="POST" style="display:inline;">
+                                            <a href="{{ route('quote.edit', $quote->id) }}"
+                                                class="btn btn-warning btn-sm">Edit</a>
+                                            <form action="{{ route('quote.destroy', $quote->id) }}" method="POST"
+                                                style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-sm"
                                                     onclick="return confirm('Are you sure?')">Delete</button>
                                             </form>
                                         </td>
+
                                     </tr>
                                 @empty
                                     <tr>

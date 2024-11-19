@@ -280,7 +280,7 @@
             <div class="dlabnav-scroll">
                 <ul class="metismenu" id="menu">
                     @yield('sidebar-links')
-                    <li><a href="http://127.0.0.1:8000/" class="" aria-expanded="false">
+                    <li><a href="{{ url('dashboard') }}" class="" aria-expanded="false">
                             <i class="fas fa-home"></i>
                             <span class="nav-text">Dashboard</span>
                         </a>
@@ -360,7 +360,7 @@
                             <li><a href="{{ url('konsultasi') }}">List</a></li>
                         </ul>
                     </li>
-                    <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                    {{-- <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
                             <i class="fas fa-file-alt"></i>
                             <span class="nav-text">NQ Certificate</span>
                         </a>
@@ -377,7 +377,7 @@
                             <li><a href="{{ url('training') }}">Trainer</a></li>
                             <li><a href="{{ url('trainingReader') }}">Reader</a></li>
                         </ul>
-                    </li>
+                    </li> --}}
                     <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
                             <i class="fas fa-clone"></i>
                             <span class="nav-text">Konfigurasi</span>
@@ -395,8 +395,8 @@
                 </div>
 
                 <div class="copyright">
-                    <p><strong>Fillow Saas Admin</strong> © 2021 All Rights Reserved</p>
-                    <p class="fs-12">Made with <span class="heart"></span> by DexignLabs</p>
+                    <p><strong>Name Quotient</strong> © 2024 All Rights Reserved</p>
+                    <p class="fs-12">Made by Nirmana Mosuqu Quants Team</p>
                 </div>
             </div>
         </div>
@@ -428,7 +428,8 @@
         ***********************************-->
         <div class="footer">
             <div class="copyright">
-                <p>Copyright © Designed &amp; Developed by <a href="../index.htm" target="_blank">DexignLab</a> 2021
+                <p>Copyright © Designed &amp; Developed by <a href="../index.htm" target="_blank">PT. Nirmana Mosuqu
+                        Quants Team</a> 2024
                 </p>
             </div>
         </div>

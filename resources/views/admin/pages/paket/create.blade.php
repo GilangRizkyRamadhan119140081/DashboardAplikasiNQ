@@ -13,7 +13,7 @@
             <div class="mb-3">
                 <label for="id_paket" class="form-label">ID Paket</label>
                 <select class="form-select" id="id_paket" name="id_paket" required>
-                    <option value="">-- Pilih Paket --</option>
+                    <option value="">-- Pilih Role --</option>
                     <option value="1" {{ old('id_paket', $paket->id_paket ?? '') == 1 ? 'selected' : '' }}>Free
                     </option>
                     <option value="2" {{ old('id_paket', $paket->id_paket ?? '') == 2 ? 'selected' : '' }}>Gold
