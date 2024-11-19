@@ -9,24 +9,18 @@ class DetailProduk extends Model
 {
     use HasFactory;
 
-    // Nama tabel
+    // Tentukan nama tabel jika berbeda dari konvensi Laravel
     protected $table = 'produk';
 
-    // Primary key
+    // Tentukan primary key
     protected $primaryKey = 'id';
 
-    // Tipe primary key
+    // Tentukan tipe primary key jika bukan integer auto-increment
+    public $incrementing = false;
     protected $keyType = 'bigint';
 
-    // Apakah primary key menggunakan auto-increment?
-    public $incrementing = false;
-
-    // Apakah timestamps (`created_at` dan `updated_at`) digunakan?
-    public $timestamps = true;
-
-    // Kolom yang dapat diisi (mass assignable)
+    // Tentukan kolom yang boleh diisi
     protected $fillable = [
-        'id',
         'kode_produk',
         'kategori',
         'nama_produk',
@@ -36,23 +30,19 @@ class DetailProduk extends Model
         'id_user',
         'pemilik',
         'image',
+    ];
+
+    // Atur kolom yang akan dianggap sebagai tanggal
+    protected $dates = [
         'created_at',
-        'updated_at'
+        'updated_at',
     ];
 
-    // Format tanggal dan tipe data
-    protected $casts = [
-        'id' => 'integer',
-        'id_user' => 'integer',
-        'hari' => 'integer',
-        'harga' => 'decimal:0',
-        'created_at' => 'datetime',
-        'updated_at' => 'datetime'
-    ];
-
-    // Relasi ke tabel Paket (opsional jika tabel `paket` ada)
-    public function produk()
+    /**
+     * Relasi ke model User
+     */
+    public function user()
     {
-        return $this->belongsTo(Paket::class, 'id_user', 'id');
+        return $this->belongsTo(User::class, 'id_user');
     }
 }

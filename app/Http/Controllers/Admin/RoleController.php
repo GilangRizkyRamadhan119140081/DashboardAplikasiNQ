@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Roles;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Hash;
 
 class RoleController extends Controller

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\DetailPaket;
+use Illuminate\Pagination\Paginator;
 use Carbon\Carbon;
 
 class PaketController extends Controller
@@ -49,7 +50,7 @@ class PaketController extends Controller
         // Menyimpan data ke tabel detail_paket
         DetailPaket::create($validated);
 
-        return redirect()->route('paket.index')->with('success', 'Paket berhasil ditambahkan');
+        return redirect()->route('admin.pages.paket.index')->with('success', 'Paket berhasil ditambahkan');
     }
 
     // Menampilkan form untuk mengedit paket

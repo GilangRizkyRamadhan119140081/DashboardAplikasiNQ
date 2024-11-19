@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Users;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Pagination\Paginator;
 use Carbon\Carbon;
 
 class UserController extends Controller
