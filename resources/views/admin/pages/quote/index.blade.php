@@ -1,6 +1,6 @@
 @extends('admin.layouts.index')
 
-@section('title', 'Quote Management')
+@section('title', 'Quote List')
 
 @section('content')
     <div class="row">

@@ -48,7 +48,10 @@ Route::delete('/produk/{id}', [ProdukController::class, 'ProdukDestroy'])->name(
 
 Route::get('/voucher', [VoucherController::class, 'VoucherIndex'])->name('voucher.index');
 Route::get('/voucher/create', [VoucherController::class, 'VoucherCreate'])->name('voucher.create');
-Route::post('/voucher', [ProdukController::class, 'VoucherCreate'])->name('voucher.store');
+Route::post('/voucherStore', [VoucherController::class, 'VoucherStore'])->name('voucher.store');
+Route::get('/voucher/{id}/edit', [VoucherController::class, 'VoucherEdit'])->name('voucher.edit');
+Route::put('/voucher/{id}', [VoucherController::class, 'VoucherUpdate'])->name('voucher.update');
+Route::delete('/voucher/{id}', [VoucherController::class, 'VoucherDestroy'])->name('voucher.destroy');
 
 Route::get('/artikel', [ArtikelController::class, 'ArtikelIndex'])->name('artikel.index');
 Route::get('/artikel/create', [ArtikelController::class, 'ArtikelCreate'])->name('artikel.create');

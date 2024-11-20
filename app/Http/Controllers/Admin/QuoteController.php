@@ -33,7 +33,7 @@ class QuoteController extends Controller
             'user_update' => 'required|integer|exists:users,id',
         ]);
 
-        dd($validated);
+        // dd($validated);
 
         // Menyimpan data ke database
         Quote::create($validated);

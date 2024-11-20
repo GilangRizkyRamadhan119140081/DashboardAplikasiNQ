@@ -1,6 +1,6 @@
 @extends('admin.layouts.index')
 
-@section('title', 'Paket Management')
+@section('title', 'Paket List')
 
 @section('content')
     <div class="row">

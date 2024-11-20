@@ -1,6 +1,6 @@
 @extends('admin.layouts.index')
 
-@section('title', 'Tambah Quote')
+@section('title', 'Create Quote')
 
 @section('content')
     <div class="container mt-5">

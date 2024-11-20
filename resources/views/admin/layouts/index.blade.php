@@ -51,7 +51,7 @@
             Nav header start
         ***********************************-->
         <div class="nav-header">
-            <a href="index.html" class="brand-logo">
+            <a href="{{route('dashboard.index')}}" class="brand-logo">
                 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="64px" height="60px"
                     viewBox="0 0 128 120"
                     style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"

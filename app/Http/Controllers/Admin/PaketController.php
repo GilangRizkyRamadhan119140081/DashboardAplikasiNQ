@@ -50,7 +50,7 @@ class PaketController extends Controller
         // Menyimpan data ke tabel detail_paket
         DetailPaket::create($validated);
 
-        return redirect()->route('admin.pages.paket.index')->with('success', 'Paket berhasil ditambahkan');
+        return redirect()->route('paket.index')->with('success', 'Paket berhasil ditambahkan');
     }
 
     // Menampilkan form untuk mengedit paket

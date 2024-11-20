@@ -1,6 +1,6 @@
 @extends('admin.layouts.index')
 
-@section('title', 'Voucher Management')
+@section('title', 'Voucher List')
 
 @section('content')
     <div class="row">
@@ -28,30 +28,30 @@
                             </thead>
                             <tbody>
                                 @forelse ($voucher as $item)
-                                    <tr>
-                                        <td>{{ $item->id }}</td>
-                                        <td>{{ $item->user_id }}</td>
-                                        <td>{{ $item->user_used }}</td>
-                                        <td>{{ $item->voucher_code }}</td>
-                                        <td>{{ $item->voucher_expire ?? '-' }}</td>
-                                        <td>{{ $item->paket_id ?? '-' }}</td>
-                                        <td>{{ $item->created_at ?? '-' }}</td>
-                                        <td>{{ $item->updated_at ?? '-' }}</td>
-                                        <td>
-                                            <a href="#" class="btn btn-warning btn-sm">Edit</a>
-                                            <form action="#" method="POST" style="display:inline;">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm"
-                                                    onclick="return confirm('Are you sure?')">Delete</button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="9" class="text-center">No Users Found</td>
-                                    </tr>
-                                @endforelse
+                                <tr>
+                                    <td>{{ $item->id }}</td>
+                                    <td>{{ $item->user_id }}</td>
+                                    <td>{{ $item->user_used ?? '-' }}</td>
+                                    <td>{{ $item->voucher_code ?? '-' }}</td>
+                                    <td>{{ $item->voucher_expire ?? '-' }}</td>
+                                    <td>{{ $item->paket_id ?? '-' }}</td>
+                                    <td>{{ $item->created_at ?? '-' }}</td>
+                                    <td>{{ $item->updated_at ?? '-' }}</td>
+                                    <td>
+                                        <a href="#" class="btn btn-warning btn-sm">Edit</a>
+                                        <form action="#" method="POST" style="display:inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="9" class="text-center">No Vouchers Found</td>
+                                </tr>
+                            @endforelse
+                            
                             </tbody>
                         </table>
                         <div class="d-flex justify-content-center">{{ $voucher->links() }}</div>
