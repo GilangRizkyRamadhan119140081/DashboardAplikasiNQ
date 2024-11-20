@@ -12,6 +12,8 @@ use App\Http\Controllers\Admin\QuoteController;
 use App\Http\Controllers\Admin\KonsultasiController;
 use App\Http\Controllers\Admin\SertifikatController;
 use App\Http\Controllers\Admin\TrainingController;
+use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\InboxController;
 
 
 Route::get('/', function () {
@@ -67,6 +69,10 @@ Route::post('/quoteStore', [QuoteController::class, 'QuoteStore'])->name('quote.
 Route::get('/quote/{id}/edit', [QuoteController::class, 'QuoteEdit'])->name('quote.edit');
 Route::put('/quote/{id}', [QuoteController::class, 'QuoteUpdate'])->name('quote.update');
 Route::delete('/quote/{id}', [QuoteController::class, 'QuoteDestroy'])->name('quote.destroy');
+
+Route::get('/profile', [ProfileController::class, 'ProfileIndex'])->name('profile.index');
+
+Route::get('/inbox', [InboxController::class, 'InboxIndex'])->name('inbox.index');
 
 Route::get('/konsultasi', [KonsultasiController::class, 'KonsultasiIndex'])->name('konsultasi.index');
 Route::get('/sertifikat', [SertifikatController::class, 'SertifikatIndex'])->name('sertifikat.index');

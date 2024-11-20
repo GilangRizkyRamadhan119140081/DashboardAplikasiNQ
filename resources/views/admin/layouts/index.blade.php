@@ -225,10 +225,10 @@
                             <li class="nav-item dropdown  header-profile">
                                 <a class="nav-link" href="javascript:void(0);" role="button"
                                     data-bs-toggle="dropdown">
-                                    <img src="{{ asset('assets/images/user.jpg') }}" width="56" alt="">
+                                    <img src="{{ asset('assets/images/user1.jpg') }}" width="56" alt="">
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end">
-                                    <a href="app-profile.html" class="dropdown-item ai-icon">
+                                    <a href="{{route('profile.index')}}" class="dropdown-item ai-icon">
                                         <svg id="icon-user1" xmlns="http://www.w3.org/2000/svg" class="text-primary"
                                             width="18" height="18" viewbox="0 0 24 24" fill="none"
                                             stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -238,7 +238,7 @@
                                         </svg>
                                         <span class="ms-2">Profile </span>
                                     </a>
-                                    <a href="email-inbox.html" class="dropdown-item ai-icon">
+                                    <a href="{{route(('inbox.index'))}}" class="dropdown-item ai-icon">
                                         <svg id="icon-inbox" xmlns="http://www.w3.org/2000/svg" class="text-success"
                                             width="18" height="18" viewbox="0 0 24 24" fill="none"
                                             stroke="currentColor" stroke-width="2" stroke-linecap="round"
