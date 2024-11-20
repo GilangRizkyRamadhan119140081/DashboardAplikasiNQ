@@ -9,47 +9,37 @@ class Voucher extends Model
 {
     use HasFactory;
 
-    // Nama tabel
+    // Nama tabel yang digunakan oleh model ini
     protected $table = 'nq_voucher';
 
-    // Primary keys
+    // Primary key tabel
     protected $primaryKey = 'id';
 
-    // Tipe primary key
-    protected $keyType = 'bigint';
+    // Tabel tidak memiliki timestamp auto
+    public $timestamps = false; // Jika kamu menggunakan custom created_at/updated_at, sesuaikan ini
 
-    // Apakah primary key menggunakan auto-increment?
-    public $incrementing = false;
-
-    // Apakah timestamps (`created_at` dan `updated_at`) digunakan?
-    public $timestamps = true;
-
-    // Kolom yang dapat diisi (mass assignable)
+    // Kolom-kolom yang dapat diisi secara mass-assignment
     protected $fillable = [
-        'id',
         'user_id',
         'user_used',
-        'voucher_code  ',
+        'voucher_code',
         'voucher_expire',
         'paket_id',
         'created_at',
-        'updated_at'
+        'updated_at',
     ];
 
-    // Format tanggal dan tipe data
+    // Tipe data untuk kolom yang memerlukan konversi otomatis
     protected $casts = [
         'id' => 'integer',
         'user_id' => 'integer',
         'user_used' => 'integer',
-        'paket_id' => 'integer',
-        'voucher_expire' => 'datetime',
+        'voucher_expire' => 'date',  // Convert 'voucher_expire' menjadi objek date
         'created_at' => 'datetime',
-        'updated_at' => 'datetime'
+        'updated_at' => 'datetime',
     ];
 
-    // Relasi ke tabel Paket (opsional jika tabel `paket` ada)
-    public function produk()
-    {
-        return $this->belongsTo(Paket::class, 'user_id', 'id');
-    }
+    // Jika kolom timestamps ingin dikendalikan secara manual, Anda dapat tentukan secara eksplisit
+    const CREATED_AT = 'created_at';
+    const UPDATED_AT = 'updated_at';
 }

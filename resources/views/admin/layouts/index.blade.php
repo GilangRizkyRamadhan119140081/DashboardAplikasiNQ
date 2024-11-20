@@ -51,7 +51,7 @@
             Nav header start
         ***********************************-->
         <div class="nav-header">
-            <a href="{{route('dashboard.index')}}" class="brand-logo">
+            <a href="index.html" class="brand-logo">
                 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="64px" height="60px"
                     viewBox="0 0 128 120"
                     style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
@@ -280,7 +280,7 @@
             <div class="dlabnav-scroll">
                 <ul class="metismenu" id="menu">
                     @yield('sidebar-links')
-                    <li><a href="{{ url('dashboard') }}" class="" aria-expanded="false">
+                    <li><a href="{{ url('dashboarddff') }}" class="" aria-expanded="false">
                             <i class="fas fa-home"></i>
                             <span class="nav-text">Dashboard</span>
                         </a>

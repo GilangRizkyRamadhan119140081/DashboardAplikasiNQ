@@ -1,6 +1,6 @@
 @extends('admin.layouts.index')
 
-@section('title', 'Voucher List')
+@section('title', 'Voucher Management')
 
 @section('content')
     <div class="row">
@@ -8,7 +8,6 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">Voucher List</h4>
-                    {{-- <a href="{{ route('admin.user.create') }}" class="btn btn-primary">Add User</a> --}}
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -16,49 +15,49 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
+                                    <th>Voucher Code</th>
+                                    <th>Paket ID</th> <!-- Kolom baru untuk Paket ID -->
                                     <th>User ID</th>
-                                    <th>Used by User</th>
-                                    <th>Voucher Code </th>
-                                    <th>Voucher Expire </th>
-                                    <th>ID Paket </th>
+                                    <th>User Used</th>
+                                    <th>Voucher Expire</th>
                                     <th>Created At</th>
-                                    <th>Update At</th>
+                                    <th>Updated At</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($voucher as $item)
-                                <tr>
-                                    <td>{{ $item->id }}</td>
-                                    <td>{{ $item->user_id }}</td>
-                                    <td>{{ $item->user_used ?? '-' }}</td>
-                                    <td>{{ $item->voucher_code ?? '-' }}</td>
-                                    <td>{{ $item->voucher_expire ?? '-' }}</td>
-                                    <td>{{ $item->paket_id ?? '-' }}</td>
-                                    <td>{{ $item->created_at ?? '-' }}</td>
-                                    <td>{{ $item->updated_at ?? '-' }}</td>
-                                    <td>
-                                        <a href="#" class="btn btn-warning btn-sm">Edit</a>
-                                        <form action="#" method="POST" style="display:inline;">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="9" class="text-center">No Vouchers Found</td>
-                                </tr>
-                            @endforelse
-                            
+                                @foreach ($vouchers as $voucher)
+                                    <tr>
+                                        <td>{{ $voucher->id }}</td>
+                                        <td>{{ $voucher->voucher_code }}</td>
+                                        <td>{{ $voucher->paket_id }}</td> <!-- Menampilkan Paket ID -->
+                                        <td>{{ $voucher->user_id ?? '-' }}</td>
+                                        <td>{{ $voucher->user_used ?? '-' }}</td>
+                                        <td>{{ $voucher->voucher_expire }}</td>
+                                        <td>{{ $voucher->created_at }}</td>
+                                        <td>{{ $voucher->updated_at ?? '-' }}</td>
+                                        <td>
+                                            <a href="{{ route('voucher.edit', $voucher->id) }}"
+                                                class="btn btn-warning btn-sm">Edit</a>
+                                            <form action="{{ route('voucher.destroy', $voucher->id) }}" method="POST"
+                                                style="display:inline;"
+                                                onsubmit="return confirm('Are you sure you want to delete this voucher?');">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
-                        <div class="d-flex justify-content-center">{{ $voucher->links() }}</div>
+
                         <div class="d-flex justify-content-center">
-                            Showing {{ $voucher->firstItem() }} to {{ $voucher->lastItem() + 4 }} of
-                            {{ $voucher->total() }}
-                            results
+                            {{ $vouchers->links() }}
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            Showing {{ $vouchers->firstItem() }} to {{ $vouchers->lastItem() }} of
+                            {{ $vouchers->total() }} results
                         </div>
                     </div>
                 </div>

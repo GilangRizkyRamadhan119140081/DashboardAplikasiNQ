@@ -1,7 +1,5 @@
 @extends('admin.layouts.index')
 
-@section('title', 'Create User')
-
 @section('content')
     <div class="container mt-5">
         <h2>Tambah User Baru</h2>
