@@ -14,12 +14,17 @@ use App\Http\Controllers\Admin\SertifikatController;
 use App\Http\Controllers\Admin\TrainingController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\InboxController;
+use App\Http\Controllers\Admin\Auth\LoginController;
 
 
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::controller(LoginController::class)->group(function () {
+    Route::get('/login','LoginForm')->name('login'); 
+    Route::post('/login','login');
+    Route::post('/logout','logout')->name('logout');
+  });
 Route::get('/dashboard', [DashboardController::class, 'DashboardIndex'])->name('dashboard.index');
 
 Route::get('/user', [UserController::class, 'UserIndex'])->name('user.index');
@@ -75,5 +80,10 @@ Route::get('/profile', [ProfileController::class, 'ProfileIndex'])->name('profil
 Route::get('/inbox', [InboxController::class, 'InboxIndex'])->name('inbox.index');
 
 Route::get('/konsultasi', [KonsultasiController::class, 'KonsultasiIndex'])->name('konsultasi.index');
+Route::get('/konsultasi/create', [KonsultasiController::class, 'KonsultasiCreate'])->name('konsultasi.create');
+Route::post('/konsultasi', [KonsultasiController::class, 'KonsultasiStore'])->name('konsultasi.store');
+Route::get('/konsultasi/{id}/edit', [KonsultasiController::class, 'KonsultasiEdit'])->name('konsultasi.edit');
+Route::put('/konsultasi/{id}', [KonsultasiController::class, 'KonsultasiUpdate'])->name('konsultasi.update');
+Route::delete('/konsultasi/{id}', [KonsultasiController::class, 'KonsultasiDestroy'])->name('konsultasi.destroy');
 Route::get('/sertifikat', [SertifikatController::class, 'SertifikatIndex'])->name('sertifikat.index');
 Route::get('/training', [TrainingController::class, 'TrainingIndex'])->name('training.index');

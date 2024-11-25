@@ -12,21 +12,20 @@ class Konsultasi extends Model
     // Nama tabel
     protected $table = 'konsultasi';
 
-    // Primary keys
+    // Primary key
     protected $primaryKey = 'id';
 
     // Tipe primary key
-    protected $keyType = 'bigint';  
+    protected $keyType = 'unsignedBigInteger';
 
-    // Apakah primary key menggunakan auto-increment?
-    public $incrementing = false;
+    // Auto-incrementing primary key
+    public $incrementing = true;
 
     // Apakah timestamps (`created_at` dan `updated_at`) digunakan?
     public $timestamps = true;
 
     // Kolom yang dapat diisi (mass assignable)
     protected $fillable = [
-        'id',
         'user_id',
         'judul_konsultasi',
         'deskripsi_konsultasi',
@@ -35,17 +34,18 @@ class Konsultasi extends Model
         'updated_at',
     ];
 
-    // Format tanggal dan tipe data
+    // Tipe data untuk kolom yang memerlukan konversi otomatis
     protected $casts = [
         'id' => 'integer',
+        'user_id' => 'integer',
+        'tanggal_konsultasi' => 'date',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
-        'user_update' => 'integer'
     ];
 
-    // // Relasi ke tabel Paket (opsional jika tabel `paket` ada)
-    // public function produk()
-    // {
-    //     return $this->belongsTo(Paket::class, 'id_user', 'id');
-    // }
+    // Relasi ke tabel User (asumsi tabel user ada)
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }

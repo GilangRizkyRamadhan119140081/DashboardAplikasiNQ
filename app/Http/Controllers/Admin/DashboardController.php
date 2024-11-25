@@ -11,6 +11,6 @@ class DashboardController extends Controller
 {
     public function DashboardIndex()
     {
-        return view('admin.layouts.index'); // Sesuaikan dengan view yang ada
+        return view('admin.pages.dashboard.index'); // Sesuaikan dengan view yang ada
     }
 }

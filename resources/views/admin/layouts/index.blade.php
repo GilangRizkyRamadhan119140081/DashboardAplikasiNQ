@@ -18,7 +18,7 @@
     <title>@yield('title', 'Admin Dashboard')</title>
 
     <!-- FAVICONS ICON -->
-    <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/favicon.png') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/NQ2.png') }}">
     <link href="{{ asset('assets/vendor/jquery-nice-select/css/nice-select.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendor/owl-carousel/owl.carousel.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/vendor/nouislider/nouislider.min.css') }}">
@@ -52,7 +52,7 @@
         ***********************************-->
         <div class="nav-header">
             <a href="index.html" class="brand-logo">
-                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="64px" height="60px"
+                {{-- <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="64px" height="60px"
                     viewBox="0 0 128 120"
                     style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
                     xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -180,7 +180,8 @@
                         <path style="opacity:1" fill="#131012"
                             d="M 76.5,113.5 C 73.4816,113.665 70.4816,113.498 67.5,113C 68.2583,111.636 67.7583,110.469 66,109.5C 64.9505,110.517 63.7839,110.684 62.5,110C 64.1953,107.974 66.3619,106.808 69,106.5C 71.5997,107.343 74.0997,107.343 76.5,106.5C 79.5184,106.665 82.5184,106.498 85.5,106C 87.8595,104.642 90.1928,103.642 92.5,103C 88.0168,108.017 82.6835,111.517 76.5,113.5 Z" />
                     </g>
-                </svg>
+                </svg> --}}
+                <img src="{{ asset('assets/images/NQ2.png') }}" width="56" alt="">
                 <div class="brand-title">
                     <h2 class="">NQ</h2>
                     <span class="brand-sub-title">Name Quotient</span>
@@ -223,12 +224,11 @@
                                 </div>
                             </li>
                             <li class="nav-item dropdown  header-profile">
-                                <a class="nav-link" href="javascript:void(0);" role="button"
-                                    data-bs-toggle="dropdown">
+                                <a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown">
                                     <img src="{{ asset('assets/images/user1.jpg') }}" width="56" alt="">
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end">
-                                    <a href="{{route('profile.index')}}" class="dropdown-item ai-icon">
+                                    <a href="{{ route('profile.index') }}" class="dropdown-item ai-icon">
                                         <svg id="icon-user1" xmlns="http://www.w3.org/2000/svg" class="text-primary"
                                             width="18" height="18" viewbox="0 0 24 24" fill="none"
                                             stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -238,7 +238,7 @@
                                         </svg>
                                         <span class="ms-2">Profile </span>
                                     </a>
-                                    <a href="{{route(('inbox.index'))}}" class="dropdown-item ai-icon">
+                                    <a href="{{ route('inbox.index') }}" class="dropdown-item ai-icon">
                                         <svg id="icon-inbox" xmlns="http://www.w3.org/2000/svg" class="text-success"
                                             width="18" height="18" viewbox="0 0 24 24" fill="none"
                                             stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -250,7 +250,12 @@
                                         </svg>
                                         <span class="ms-2">Inbox </span>
                                     </a>
-                                    <a href="page-error-404.html" class="dropdown-item ai-icon">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        style="display: none;">
+                                        @csrf
+                                    </form>
+                                    <a href="#" class="dropdown-item ai-icon"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger"
                                             width="18" height="18" viewbox="0 0 24 24" fill="none"
                                             stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -260,8 +265,9 @@
                                             <line x1="21" y1="12" x2="9" y2="12">
                                             </line>
                                         </svg>
-                                        <span class="ms-2">Logout </span>
+                                        <span class="ms-2">Logout</span>
                                     </a>
+
                                 </div>
                             </li>
                         </ul>
@@ -280,7 +286,7 @@
             <div class="dlabnav-scroll">
                 <ul class="metismenu" id="menu">
                     @yield('sidebar-links')
-                    <li><a href="{{ url('dashboarddff') }}" class="" aria-expanded="false">
+                    <li><a href="{{ url('dashboard') }}" class="" aria-expanded="false">
                             <i class="fas fa-home"></i>
                             <span class="nav-text">Dashboard</span>
                         </a>
