@@ -18,11 +18,11 @@
                      data-bs-toggle="modal" 
                      data-bs-target="#profileDetailModal">
 
-                <h3 class="mt-3">Name</h3>
-                <p class="text-muted">Email</p>
+                <h3 class="mt-3">{{ $user->name }}</h3>
+                <p class="text-muted">{{ $user->email }}</p>
 
                 <!-- Optional: Additional summary information -->
-                <p>Your Bio Here</p>
+                {{-- <p>Your Bio Here</p> --}}
             </div>
         </div>
 
@@ -42,11 +42,11 @@
                                  style="width: 100px; height: 100px; object-fit: cover;">
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><strong>Name:</strong> Name</li>
-                            <li class="list-group-item"><strong>Email:</strong> Email@mail.com</li>
-                            <li class="list-group-item"><strong>Phone:</strong> 087654321 or Not Provided</li>
+                            <li class="list-group-item"><strong>Name:</strong> {{ $user->name }}</li>
+                            <li class="list-group-item"><strong>Email:</strong>{{ $user->email }}</li>
+                            {{-- <li class="list-group-item"><strong>Phone:</strong> 087654321 or Not Provided</li>
                             <li class="list-group-item"><strong>Address:</strong> Address or Not Provided</li>
-                            <li class="list-group-item"><strong>Joined At:</strong> Date d-M-Y</li>
+                            <li class="list-group-item"><strong>Joined At:</strong> Date d-M-Y</li> --}}
                         </ul>
                     </div>
                     <div class="modal-footer">
