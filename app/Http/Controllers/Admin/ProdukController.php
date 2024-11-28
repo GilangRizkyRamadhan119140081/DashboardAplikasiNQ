@@ -10,11 +10,22 @@ use Illuminate\Pagination\Paginator;
 
 class ProdukController extends Controller
 {
-    public function ProdukIndex()
-    {
-        $produks = DetailProduk::all();
-        return view('admin.pages.produk.index',compact('produks')); // Sesuaikan dengan view yang ada
-    }
+    public function ProdukIndex(Request $request)
+{
+    // Ambil input pencarian dari query string
+    $search = $request->input('search');
+
+    // Filter data berdasarkan pencarian
+    $produks = DetailProduk::when($search, function ($query, $search) {
+        return $query->where('kode_produk', 'like', "%$search%")     // Cari berdasarkan kode produk
+            ->orWhere('kategori', 'like', "%$search%")              // Cari berdasarkan kategori
+            ->orWhere('nama_produk', 'like', "%$search%");          // Cari berdasarkan nama produk
+    })
+    ->paginate(10); // Batasi data menjadi 10 per halaman
+
+    return view('admin.pages.produk.index', compact('produks'));
+}
+
     public function ProdukCreate()
     {
         return view('admin.pages.produk.create');

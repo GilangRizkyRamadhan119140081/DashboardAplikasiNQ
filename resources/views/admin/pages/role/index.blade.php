@@ -8,6 +8,13 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">User List</h4>
+                    <li class="nav-item d-flex align-items-center">
+                        <div class="input-group search-area">
+                            <input type="text" class="form-control" placeholder="Search here...">
+                            <span class="input-group-text"><a href="javascript:void(0)"><i
+                                        class="flaticon-381-search-2"></i></a></span>
+                        </div>
+                    </li>
                     {{-- <a href="{{ route('admin.user.create') }}" class="btn btn-primary">Add User</a> --}}
                 </div>
                 <div class="card-body">

@@ -8,8 +8,19 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">User List</h4>
-                    {{-- <a href="{{ route('admin.user.create') }}" class="btn btn-primary">Add User</a> --}}
+                    <form action="{{ route('user.index') }}" method="GET"> <!-- Kirimkan ke route user.index -->
+                        <div class="input-group search-area">
+                            <input type="text" name="search" class="form-control" placeholder="Search here..."
+                                value="{{ request('search') }}"> <!-- Isi input dengan kata kunci pencarian -->
+                            <span class="input-group-text">
+                                <button type="submit" style="border: none; background: none;">
+                                    <i class="flaticon-381-search-2"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
                 </div>
+
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped">
@@ -58,6 +69,10 @@
                             </tbody>
 
                         </table>
+                        <div class="d-flex justify-content-center">
+                            {{ $users->links() }}
+                        </div>
+
                     </div>
                 </div>
             </div>

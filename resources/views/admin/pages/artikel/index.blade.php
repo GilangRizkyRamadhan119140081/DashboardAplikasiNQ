@@ -6,7 +6,21 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
-                <h4 class="card-title">Article List</h4>
+                <div class="card-header">
+                    <h4 class="card-title">Article List</h4>
+                    <form action="{{ route('artikel.index') }}" method="GET"> <!-- Form untuk pencarian -->
+                        <div class="input-group search-area">
+                            <input type="text" name="search" class="form-control" placeholder="Search here..."
+                                value="{{ request('search') }}"> <!-- Menampilkan kata kunci pencarian -->
+                            <span class="input-group-text">
+                                <button type="submit" style="border: none; background: none;">
+                                    <i class="flaticon-381-search-2"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped">

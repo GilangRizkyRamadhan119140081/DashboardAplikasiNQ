@@ -8,7 +8,19 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">Daftar Produk</h4>
+                    <form action="{{ route('produk.index') }}" method="GET"> <!-- Kirimkan ke route produk.index -->
+                        <div class="input-group search-area">
+                            <input type="text" name="search" class="form-control" placeholder="Search here..."
+                                value="{{ request('search') }}"> <!-- Isi input dengan kata kunci pencarian -->
+                            <span class="input-group-text">
+                                <button type="submit" style="border: none; background: none;">
+                                    <i class="flaticon-381-search-2"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
                 </div>
+
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped">
@@ -96,6 +108,10 @@
                                 @endforelse
                             </tbody>
                         </table>
+                        <div class="d-flex justify-content-center">
+                            {{ $produks->links() }}
+                        </div>
+
                     </div>
                 </div>
             </div>

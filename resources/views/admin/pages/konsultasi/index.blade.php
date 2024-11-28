@@ -8,7 +8,20 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">Konsultasi List</h4>
+                    <form action="{{ route('konsultasi.index') }}" method="GET" class="d-flex"> <!-- Form pencarian -->
+                        <div class="input-group search-area">
+                            <input type="text" name="search" class="form-control"
+                                placeholder="Search by Judul or User ID..." value="{{ request('search') }}">
+                            <!-- Menampilkan nilai pencarian sebelumnya -->
+                            <span class="input-group-text">
+                                <button type="submit" style="border: none; background: none;">
+                                    <i class="flaticon-381-search-2"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
                 </div>
+
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped">

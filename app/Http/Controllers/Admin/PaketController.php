@@ -11,16 +11,22 @@ use Carbon\Carbon;
 class PaketController extends Controller
 {
     // Menampilkan daftar paket
-    public function PaketIndex()
-    {
-        // Mengambil semua data dari tabel detail_paket
-        $detail_paket = DetailPaket::all(); // Mengambil semua data tanpa pagination
+    public function PaketIndex(Request $request)
+{
+    // Ambil input pencarian dari query string
+    $search = $request->input('search');
 
-        // Jika ingin menggunakan pagination
-        // $detail_paket = DetailPaket::paginate(10);
+    // Filter data berdasarkan pencarian
+    $detail_paket = DetailPaket::when($search, function ($query, $search) {
+        return $query->where('kode_paket', 'like', "%$search%") // Cari berdasarkan kode paket
+            ->orWhere('id_paket', 'like', "%$search%")          // Cari berdasarkan ID paket
+            ->orWhere('deskripsi1', 'like', "%$search%");       // Cari berdasarkan deskripsi
+    })
+    ->paginate(10); // Batasi data menjadi 10 per halaman
 
-        return view('admin.pages.paket.index', compact('detail_paket'));
-    }
+    return view('admin.pages.paket.index', compact('detail_paket'));
+}
+
 
     // Menampilkan form untuk membuat paket baru
     public function PaketCreate()

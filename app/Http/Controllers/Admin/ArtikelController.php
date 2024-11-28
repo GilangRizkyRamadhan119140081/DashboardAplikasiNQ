@@ -10,12 +10,25 @@ use Illuminate\Pagination\Paginator;
 class ArtikelController extends Controller
 {
     // Menampilkan halaman index artikel
-    public function ArtikelIndex()
-    {
-        // Mengambil semua artikel dengan paginasi
-        $artikels = Artikel::latest()->paginate(10);
-        return view('admin.pages.artikel.index', compact('artikels'));
-    }
+    public function ArtikelIndex(Request $request)
+{
+    // Ambil input pencarian dari query string
+    $search = $request->input('search');
+
+    // Filter data berdasarkan pencarian
+    $artikels = Artikel::when($search, function ($query, $search) {
+        return $query->where('judul', 'like', "%$search%") // Cari berdasarkan judul
+            ->orWhereHas('user', function ($query) use ($search) {
+                $query->where('name', 'like', "%$search%"); // Cari berdasarkan nama penulis
+            })
+            ->orWhere('link', 'like', "%$search%"); // Cari berdasarkan link
+    })
+    ->latest()
+    ->paginate(10); // Batasi data menjadi 10 per halaman
+
+    return view('admin.pages.artikel.index', compact('artikels'));
+}
+
 
     // Menampilkan form untuk membuat artikel baru
     public function ArtikelCreate()

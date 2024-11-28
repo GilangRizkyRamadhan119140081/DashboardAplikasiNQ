@@ -10,11 +10,23 @@ use Carbon\Carbon;
 class QuoteController extends Controller
 {
     // Menampilkan daftar quotes
-    public function QuoteIndex()
-    {
-        $quotes = Quote::latest()->paginate(10);
-        return view('admin.pages.quote.index', compact('quotes'));
-    }
+    public function QuoteIndex(Request $request)
+{
+    // Ambil kata kunci pencarian dari query string
+    $search = $request->input('search');
+
+    // Filter data berdasarkan kata kunci pencarian
+    $quotes = Quote::when($search, function ($query, $search) {
+        return $query->where('quote', 'like', "%$search%") // Cari berdasarkan Quote
+            ->orWhere('from', 'like', "%$search%")         // Cari berdasarkan From
+            ->orWhere('title', 'like', "%$search%");       // Cari berdasarkan Title
+    })
+    ->latest()
+    ->paginate(10); // Data ditampilkan 10 per halaman
+
+    return view('admin.pages.quote.index', compact('quotes'));
+}
+
 
     // Menampilkan form untuk membuat quote baru
     public function QuoteCreate()

@@ -11,11 +11,23 @@ use Carbon\Carbon;
 class UserController extends Controller
 {
     // Menampilkan daftar user
-    public function UserIndex()
-    {
-        $users = Users::all();
-        return view('admin.pages.user.index', compact('users'));
-    }
+    public function UserIndex(Request $request)
+{
+    // Ambil input pencarian dari query string
+    $search = $request->input('search');
+
+    // Filter data berdasarkan pencarian
+    $users = Users::when($search, function ($query, $search) {
+        return $query->where('name', 'like', "%$search%") // Cari berdasarkan nama
+            ->orWhere('email', 'like', "%$search%")       // Cari berdasarkan email
+            ->orWhere('role_id', 'like', "%$search%");    // Cari berdasarkan Role ID
+    })
+    ->paginate(10); // Pagination 10 data per halaman
+
+    return view('admin.pages.user.index', compact('users'));
+}
+
+
 
     // Menampilkan form untuk membuat user baru
     public function UserCreate()

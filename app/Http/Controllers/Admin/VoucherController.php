@@ -11,12 +11,23 @@ use Illuminate\Pagination\Paginator;
 class VoucherController extends Controller
 {
     // Menampilkan daftar voucher dengan paginasi
-    public function VoucherIndex()
-    {
-        // Ambil semua data voucher dengan paginasi
-        $vouchers = Voucher::paginate(16); // Menampilkan 16 voucher per halaman
-        return view('admin.pages.voucher.index', compact('vouchers')); // Pass data ke view
-    }
+    public function VoucherIndex(Request $request)
+{
+    // Ambil input pencarian dari query string
+    $search = $request->input('search');
+
+    // Filter data berdasarkan pencarian
+    $vouchers = Voucher::when($search, function ($query, $search) {
+        return $query->where('voucher_code', 'like', "%$search%")
+            ->orWhere('paket_id', 'like', "%$search%")
+            ->orWhere('user_id', 'like', "%$search%")
+            ->orWhere('user_used', 'like', "%$search%");
+    })
+    ->paginate(16); // Tetap gunakan paginasi
+
+    return view('admin.pages.voucher.index', compact('vouchers'));
+}
+
 
     // Menampilkan form untuk membuat voucher baru
     public function VoucherCreate()

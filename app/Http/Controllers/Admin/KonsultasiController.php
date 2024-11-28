@@ -10,11 +10,22 @@ use Illuminate\Support\Facades\Validator;
 class KonsultasiController extends Controller
 {
     // Menampilkan daftar konsultasi
-    public function KonsultasiIndex()
-    {
-        $konsultasis = Konsultasi::latest()->paginate(10); // Paginate data
-        return view('admin.pages.konsultasi.index', compact('konsultasis')); // Pass data ke view
-    }
+    public function KonsultasiIndex(Request $request)
+{
+    // Ambil kata kunci pencarian
+    $search = $request->input('search');
+
+    // Filter data berdasarkan pencarian
+    $konsultasis = Konsultasi::when($search, function ($query, $search) {
+        return $query->where('judul_konsultasi', 'like', "%$search%") // Pencarian berdasarkan Judul Konsultasi
+            ->orWhere('user_id', 'like', "%$search%"); // Pencarian berdasarkan User ID
+    })
+    ->latest()
+    ->paginate(10); // Data per halaman
+
+    return view('admin.pages.konsultasi.index', compact('konsultasis')); // Kirim data ke view
+}
+
 
     // Menampilkan form untuk membuat konsultasi baru
     public function KonsultasiCreate()
