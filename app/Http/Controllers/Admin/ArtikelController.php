@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Users;
 use App\Models\Artikel; // Import model Artikel
 use Illuminate\Pagination\Paginator;
 
@@ -59,9 +60,9 @@ class ArtikelController extends Controller
     {
         // Mengambil data artikel berdasarkan id
         $artikel = Artikel::findOrFail($id);
-
+        $users = Users::all();
         // Menampilkan form edit dengan data yang sudah ada
-        return view('admin.pages.artikel.edit', compact('artikel'));
+        return view('admin.pages.artikel.edit', compact('artikel', 'users'));
     }
 
     // Memperbarui data artikel
@@ -82,7 +83,7 @@ class ArtikelController extends Controller
         // Memperbarui data artikel
         $artikel->update($validated);
 
-        return redirect()->route('admin.pages.artikel.index')->with('success', 'Artikel berhasil diperbarui');
+        return redirect()->route('artikel.index')->with('success', 'Artikel berhasil diperbarui');
     }
 
     public function ArtikelDraft()
