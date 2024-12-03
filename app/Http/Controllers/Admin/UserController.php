@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Users;
+use App\Models\DetailPaket;
+use App\Models\Log;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Pagination\Paginator;
 use Carbon\Carbon;
@@ -68,6 +70,12 @@ class UserController extends Controller
     // Memperbarui user
     public function UserUpdate(Request $request, $id)
     {
+        $cekdetailpaketlog = DetailPaket::where('kode_paket',$request->kode_paket)->first();
+        Log::create([
+            'user_id' => $id,
+            'activity' => 'Berlangganan '. $cekdetailpaketlog->kode_paket. '-hari',
+        ]);
+
         $user = Users::findOrFail($id);
 
         $validated = $request->validate([
@@ -81,11 +89,22 @@ class UserController extends Controller
             'alamat' => 'nullable|string',
             'kode_voucher' => 'nullable|string|max:255',
             'kode_paket' => 'nullable|string|max:255',
+            'expired' => 'nullable|date',
         ]);
 
         if ($request->filled('password')) {
             $validated['password'] = Hash::make($request->password);
         }
+        $kodev_exp = Users::where('id', $id)->first();
+        $cekdetailpaket = DetailPaket::where('kode_paket',$request->kode_paket)->first();
+
+        Carbon::setLocale('id');
+        $now = Carbon::now('Asia/Jakarta');
+        $cekhari = $cekdetailpaket->hari;
+        $addDaysNow = $now->copy()->addDays($cekhari);
+
+        $validated['expired'] = $addDaysNow->toDateTimeString();
+
 
         $user->update($validated);
         return redirect()->route('user.index')->with('success', 'User berhasil diperbarui');
