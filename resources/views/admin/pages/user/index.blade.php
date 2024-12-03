@@ -8,10 +8,12 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">User List</h4>
-                    <form action="{{ route('user.index') }}" method="GET"> <!-- Kirimkan ke route user.index -->
+                    <form action="{{ route('user.index') }}" method="GET">
+                        <!-- Kirimkan ke route user.index -->
                         <div class="input-group search-area">
                             <input type="text" name="search" class="form-control" placeholder="Search here..."
-                                value="{{ request('search') }}"> <!-- Isi input dengan kata kunci pencarian -->
+                                value="{{ request('search') }}">
+                            <!-- Isi input dengan kata kunci pencarian -->
                             <span class="input-group-text">
                                 <button type="submit" style="border: none; background: none;">
                                     <i class="flaticon-381-search-2"></i>
@@ -30,10 +32,17 @@
                                     <th>Role ID</th>
                                     <th>Name</th>
                                     <th>Email</th>
-                                    <th>Phone</th>
+                                    <th>Email Verified At</th>
+                                    <th>Google ID</th>
+                                    <th>Tanggal Lahir</th>
+                                    <th>Referral ID</th>
                                     <th>Referral Code</th>
                                     <th>Referral From</th>
-                                    <th>Package Code</th>
+                                    <th>Nomor HP</th>
+                                    <th>Alamat</th>
+                                    <th>Kode Voucher</th>
+                                    <th>Kode Paket</th>
+                                    <th>Expired</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -44,10 +53,17 @@
                                         <td>{{ $user->role_id }}</td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
-                                        <td>{{ $user->nomor_hp ?? '-' }}</td>
+                                        <td>{{ $user->email_verified_at ?? '-' }}</td>
+                                        <td>{{ $user->google_id ?? '-' }}</td>
+                                        <td>{{ $user->tanggal_lahir ?? '-' }}</td>
+                                        <td>{{ $user->referal_id ?? '-' }}</td>
                                         <td>{{ $user->referal_code ?? '-' }}</td>
                                         <td>{{ $user->referal_from ?? '-' }}</td>
+                                        <td>{{ $user->nomor_hp ?? '-' }}</td>
+                                        <td>{{ $user->alamat ?? '-' }}</td>
+                                        <td>{{ $user->kode_voucher ?? '-' }}</td>
                                         <td>{{ $user->kode_paket ?? '-' }}</td>
+                                        <td>{{ $user->expired ?? '-' }}</td>
                                         <td>
                                             <a href="{{ route('user.edit', $user->id) }}"
                                                 class="btn btn-warning btn-sm">Edit</a>
@@ -63,7 +79,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="9" class="text-center">No Users Found</td>
+                                        <td colspan="18" class="text-center">No Users Found</td>
                                     </tr>
                                 @endforelse
                             </tbody>
