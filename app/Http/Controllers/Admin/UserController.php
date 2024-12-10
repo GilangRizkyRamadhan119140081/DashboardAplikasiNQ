@@ -40,10 +40,11 @@ class UserController extends Controller
     // Menyimpan user baru
     public function UserStore(Request $request)
     {
+
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
+            'password' => 'nullable|string',
             'tanggal_lahir' => 'nullable|date',
             'role_id' => 'nullable|integer',
             'referal_id' => 'nullable|integer',
@@ -53,8 +54,12 @@ class UserController extends Controller
             'kode_paket' => 'nullable|string|max:255',
         ]);
 
-        $validated['email_verified_at'] = Carbon::now();
-        $validated['password'] = Hash::make($validated['password']);
+        $validated['email_verified_at'] = Carbon::now('Asia/Jakarta');
+        $request->password = '123456';
+        $validated['password'] = $request->password;
+        Users::create($validated);
+        dd($validated);
+        
         
         Users::create($validated);
         return redirect()->route('user.index')->with('success', 'User berhasil ditambahkan');

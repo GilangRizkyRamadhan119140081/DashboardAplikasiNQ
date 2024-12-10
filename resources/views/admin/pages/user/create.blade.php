@@ -35,23 +35,24 @@
             </div>
 
             <!-- Password -->
-            <div class="mb-3">
+            {{-- <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan password"
-                    required>
-            </div>
-
-            <div class="mb-3">
+               
+            </div> --}}
+            <input type="hidden" class="form-control" id="password" name="password"
+                value="$2y$12$DIPkSswPdHMujHqyuXqT1OFwFqzuALSYinIxww3d5/C43jLpndXxK" placeholder="Masukkan password"
+                required>
+            {{-- <div class="mb-3">
                 <label for="password_confirmation" class="form-label">Konfirmasi Password</label>
                 <input type="password" class="form-control" id="password_confirmation" name="password_confirmation"
                     placeholder="Ulangi password" required>
-            </div>
+            </div> --}}
 
             <!-- Checkbox Show Password -->
-            <div class="form-check mb-3">
+            {{-- <div class="form-check mb-3">
                 <input type="checkbox" class="form-check-input" id="showPassword" onclick="togglePassword()">
                 <label class="form-check-label" for="showPassword">Tampilkan Password</label>
-            </div>
+            </div> --}}
 
             <!-- Tanggal Lahir -->
             <div class="mb-3">
@@ -100,8 +101,8 @@
                     <option value="Free" {{ old('kode_paket', $user->kode_paket ?? '') == 'Free' ? 'selected' : '' }}>
                         Free
                     </option>
-                    <option value="Gold-30"
-                        {{ old('kode_paket', $user->kode_paket ?? '') == 'Gold-30' ? 'selected' : '' }}>Gold-30</option>
+                    <option value="Gold-30" {{ old('kode_paket', $user->kode_paket ?? '') == 'Gold-30' ? 'selected' : '' }}>
+                        Gold-30</option>
                     <option value="Gold-365"
                         {{ old('kode_paket', $user->kode_paket ?? '') == 'Gold-365' ? 'selected' : '' }}>Gold-365</option>
                     <option value="Platinum-30"
@@ -138,15 +139,15 @@
 
     <!-- Script untuk Modal -->
     <script>
-        function togglePassword() {
-            const passwordField = document.getElementById("password");
-            const confirmPasswordField = document.getElementById("password_confirmation");
+        // function togglePassword() {
+        //     const passwordField = document.getElementById("password");
+        //     const confirmPasswordField = document.getElementById("password_confirmation");
 
-            // Toggle the type attribute
-            const type = passwordField.type === "password" ? "text" : "password";
-            passwordField.type = type;
-            confirmPasswordField.type = type;
-        }
+        //     // Toggle the type attribute
+        //     const type = passwordField.type === "password" ? "text" : "password";
+        //     passwordField.type = type;
+        //     confirmPasswordField.type = type;
+        // }
 
         document.addEventListener("DOMContentLoaded", function() {
             // Menampilkan modal saat ada session success atau error

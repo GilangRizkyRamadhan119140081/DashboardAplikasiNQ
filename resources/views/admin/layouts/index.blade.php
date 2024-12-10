@@ -360,6 +360,17 @@
                             <li><a href="{{ url('konsultasi') }}">List</a></li>
                         </ul>
                     </li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">
+                            <i class="fas fa-credit-card"></i>
+                            <span class="nav-text">Payment</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="{{ url('payment') }}">List</a></li>
+                            <li><a href="{{ url('payment/create') }}">Payment Voucher</a></li>
+                        </ul>
+                    </li>
+
                     {{-- <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
                             <i class="fas fa-file-alt"></i>
                             <span class="nav-text">NQ Certificate</span>
