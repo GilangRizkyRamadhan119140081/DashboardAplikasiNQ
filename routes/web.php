@@ -17,11 +17,11 @@ use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\InboxController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 
-
+#login
 Route::get('/', [LoginController::class, 'LoginForm'])->name('loginForm');
 
 Route::controller(LoginController::class)->group(function () {
-    Route::get('/login','LoginForm')->name('login'); 
+    Route::get('/login','LoginForm')->name('login');
     Route::post('/login','login');
     Route::post('/logout','logout')->name('logout');
   });
@@ -87,17 +87,17 @@ Route::middleware(['auth', 'admin'])->group(function () {
   Route::put('/konsultasi/{id}', [KonsultasiController::class, 'KonsultasiUpdate'])->name('konsultasi.update');
   Route::delete('/konsultasi/{id}', [KonsultasiController::class, 'KonsultasiDestroy'])->name('konsultasi.destroy');
 
-  Route::get('/payment', [PaymentController::class, 'PaymentIndex'])->name('payment.index'); 
-  Route::get('/payment/create', [PaymentController::class, 'PaymentCreate'])->name('payment.create'); 
-  Route::post('/payment/store', [PaymentController::class, 'PaymentStore'])->name('payment.store'); 
-  Route::get('/payment/{id}/edit', [PaymentController::class, 'PaymentEdit'])->name('payment.edit'); 
-  Route::put('/payment/{id}', [PaymentController::class, 'PaymentUpdate'])->name('payment.update'); 
+  Route::get('/payment', [PaymentController::class, 'PaymentIndex'])->name('payment.index');
+  Route::get('/payment/create', [PaymentController::class, 'PaymentCreate'])->name('payment.create');
+  Route::post('/payment/store', [PaymentController::class, 'PaymentStore'])->name('payment.store');
+  Route::get('/payment/{id}/edit', [PaymentController::class, 'PaymentEdit'])->name('payment.edit');
+  Route::put('/payment/{id}', [PaymentController::class, 'PaymentUpdate'])->name('payment.update');
   Route::delete('/payment/{id}', [PaymentController::class, 'PaymentDestroy'])->name('payment.destroy');
   Route::get('/payment/{id}/edit-status', [PaymentController::class, 'editStatus'])->name('payment.editStatus');
   Route::put('/payment/{id}/update-status', [PaymentController::class, 'updateStatus'])->name('payment.updateStatus');
-  
 
-  
+
+
 
   Route::get('/sertifikat', [SertifikatController::class, 'SertifikatIndex'])->name('sertifikat.index');
   Route::get('/training', [TrainingController::class, 'TrainingIndex'])->name('training.index');
