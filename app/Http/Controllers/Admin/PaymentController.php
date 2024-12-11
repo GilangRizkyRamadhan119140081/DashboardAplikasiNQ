@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\MasterPaket;
+use App\Models\DetailPaket;
 use App\Models\Payment;
+use App\Models\Users;
+use App\Models\Log;
 
 use Illuminate\Support\Facades\DB;
 
@@ -15,14 +20,14 @@ class PaymentController extends Controller
     {
         $search = $request->input('search');
         $viewAll = $request->input('view_all'); // Menambahkan parameter untuk melihat semua data
-    
+
         // Filter data berdasarkan pencarian
         $query = Payment::when($search, function ($query, $search) {
             return $query->where('order_id', 'like', "%$search%")
                          ->orWhere('status', 'like', "%$search%")
                          ->orWhere('customer_email', 'like', "%$search%");
         });
-    
+
         // Jika pengguna memilih "view_all", maka kita hitung total harga dari seluruh data
         if ($viewAll) {
             $totalPrice = DB::table('nq_payment')
@@ -44,10 +49,10 @@ class PaymentController extends Controller
                 ->sum('price'); // Total harga tetap dihitung dari seluruh data yang ada
             $payments = $query->orderBy('created_at', 'desc')->paginate(10); // Pagination dengan 10 data per halaman
         }
-    
+
         return view('admin.pages.payment.index', compact('payments', 'totalPrice', 'viewAll'));
     }
-    
+
 
 
     // Menampilkan form untuk membuat pembayaran baru
@@ -143,11 +148,48 @@ public function updateStatus(Request $request, $id)
         'status' => 'required|string|in:settlement,pending,expire',
     ]);
 
-
-
     $payment = Payment::findOrFail($id);
+
     $payment->status = $request->input('status');
     $payment->save();
+
+    if($request->status == "settlement"){
+        $user = Users::findOrFail($payment->user_id);
+        $cekUser = Users::findOrFail($payment->user_id);
+
+        $now = Carbon::now('Asia/Jakarta');
+
+        $detailpaket = DetailPaket::where('kode_paket', $payment->item_id)->first();
+        $detailpaket2 = MasterPaket::where('id', $detailpaket->id_paket)->first();
+
+
+
+        if($cekUser->kode_paket == "Free"){
+            $detaipaketfirst = $detailpaket->hari;
+            $tambahHariDariNull = $now->copy()->addDays($detaipaketfirst);
+        }
+        else{
+
+            $PAKETexpired = $cekUser->expired;
+            $fixedExpired = Carbon::create($PAKETexpired);
+
+            $detaipaketfirst = $detailpaket->hari;
+            $tambahHariDariNull = $fixedExpired->addDays($detaipaketfirst);
+        }
+
+        $user->expired = $tambahHariDariNull->toDateTimeString();
+        $user->kode_paket = $payment->item_id;
+
+        $user->save();
+
+        Log::create([
+            'user_id' => $payment->user_id,
+            'activity' => 'Berlangganan '. $cekUser->kode_paket. ' hari',
+        ]);
+
+
+
+    }
 
     return redirect()->route('payment.index')->with('success', 'Status pembayaran berhasil diperbarui');
 }

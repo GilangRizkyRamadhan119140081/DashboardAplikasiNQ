@@ -59,8 +59,8 @@ class UserController extends Controller
         $validated['password'] = $request->password;
         Users::create($validated);
         dd($validated);
-        
-        
+
+
         Users::create($validated);
         return redirect()->route('user.index')->with('success', 'User berhasil ditambahkan');
     }
@@ -78,7 +78,7 @@ class UserController extends Controller
         $cekdetailpaketlog = DetailPaket::where('kode_paket',$request->kode_paket)->first();
         Log::create([
             'user_id' => $id,
-            'activity' => 'Berlangganan '. $cekdetailpaketlog->kode_paket. '-hari',
+            'activity' => 'Berlangganan '. $cekdetailpaketlog->kode_paket. ' hari',
         ]);
 
         $user = Users::findOrFail($id);
