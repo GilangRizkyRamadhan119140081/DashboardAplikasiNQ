@@ -33,6 +33,7 @@
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Email Verified At</th>
+                                    <th>Action - Verify Email</th> <!-- Kolom baru -->
                                     <th>Google ID</th>
                                     <th>Tanggal Lahir</th>
                                     <th>Referral ID</th>
@@ -54,6 +55,18 @@
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->email_verified_at ?? '-' }}</td>
+                                        <td>
+                                            @if (!$user->email_verified_at)
+                                                <form action="{{ route('user.verify.email', $user->id) }}" method="POST">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-primary btn-sm">
+                                                        Mark Verified
+                                                    </button>
+                                                </form>
+                                            @else
+                                                <span class="badge bg-success">Already Verified</span>
+                                            @endif
+                                        </td>
                                         <td>{{ $user->google_id ?? '-' }}</td>
                                         <td>{{ $user->tanggal_lahir ?? '-' }}</td>
                                         <td>{{ $user->referal_id ?? '-' }}</td>
@@ -67,7 +80,6 @@
                                         <td>
                                             <a href="{{ route('user.edit', $user->id) }}"
                                                 class="btn btn-warning btn-sm">Edit</a>
-
                                             <form action="{{ route('user.destroy', $user->id) }}" method="POST"
                                                 style="display:inline;">
                                                 @csrf
@@ -83,6 +95,7 @@
                                     </tr>
                                 @endforelse
                             </tbody>
+
 
                         </table>
                         <div class="d-flex justify-content-center">

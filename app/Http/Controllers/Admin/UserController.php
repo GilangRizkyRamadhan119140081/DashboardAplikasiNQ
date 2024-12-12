@@ -57,10 +57,8 @@ class UserController extends Controller
         $validated['email_verified_at'] = Carbon::now('Asia/Jakarta');
         $request->password = '123456';
         $validated['password'] = $request->password;
-        Users::create($validated);
-        dd($validated);
-
-
+        
+        
         Users::create($validated);
         return redirect()->route('user.index')->with('success', 'User berhasil ditambahkan');
     }
@@ -78,7 +76,7 @@ class UserController extends Controller
         $cekdetailpaketlog = DetailPaket::where('kode_paket',$request->kode_paket)->first();
         Log::create([
             'user_id' => $id,
-            'activity' => 'Berlangganan '. $cekdetailpaketlog->kode_paket. ' hari',
+            'activity' => 'Berlangganan '. $cekdetailpaketlog->kode_paket. '-hari',
         ]);
 
         $user = Users::findOrFail($id);
@@ -122,6 +120,16 @@ class UserController extends Controller
         $user->delete();
         return redirect()->route('user.index')->with('success', 'User berhasil dihapus');
     }
+
+    public function verifyEmail($id)
+{
+    $user = Users::findOrFail($id); // Cari user berdasarkan ID
+    $user->email_verified_at = now(); // Isi dengan waktu saat ini
+    $user->save(); // Simpan perubahan
+
+    return redirect()->route('user.index')->with('success', 'Email has been marked as verified.');
+}
+
 }
 
 
