@@ -10,7 +10,7 @@
                 <div class="card bg-dark text-white mb-3">
                     <div class="card-body">
                         <h5 class="card-title">Statistics</h5>
-                        <p>Members: <strong>10,423</strong></p>
+                        <p>Members: <strong>{{ $memberCount }}</strong></p>
                         <p>Certified: <strong>7,929</strong></p>
                     </div>
                 </div>
