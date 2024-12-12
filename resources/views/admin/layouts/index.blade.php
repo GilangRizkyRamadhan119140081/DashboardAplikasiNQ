@@ -550,5 +550,5 @@
         window.addEventListener('resize', toggleSVGVisibility);
     </script>
 </body>
-
+@stack('scripts')
 </html>
