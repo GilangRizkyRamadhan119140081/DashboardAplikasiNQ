@@ -29,7 +29,7 @@
                 <p><strong>Data Sebelumnya:</strong>
                     {{ $user->tanggal_lahir ? \Carbon\Carbon::parse($user->tanggal_lahir)->format('d/m/Y') : '-' }}</p>
                 <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir"
-                    value="{{ old('tanggal_lahir', $user->tanggal_lahir) }}">
+                    value="{{ old('tanggal_lahir', $user->tanggal_lahir ? \Carbon\Carbon::parse($user->tanggal_lahir)->format('Y-m-d') : '') }}">
             </div>
 
             <!-- Referal Code -->
