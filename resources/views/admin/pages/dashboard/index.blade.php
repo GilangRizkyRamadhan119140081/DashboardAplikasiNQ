@@ -3,18 +3,6 @@
 @section('title', 'Dashboard Management')
 
 @section('content')
-<<<<<<< Updated upstream
-    <div class="container-fluid">
-        <!-- Row 1: Statistics -->
-        <div class="row">
-            <div class="col-md-6 col-lg-3">
-                <div class="card bg-dark text-white mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">Statistics</h5>
-                        <p>Members: <strong>{{ $memberCount }}</strong></p>
-                        <p>Certified: <strong>7,929</strong></p>
-                    </div>
-=======
 <div class="container-fluid">
     <!-- Row 1: Statistics -->
     <div class="row">
@@ -23,8 +11,8 @@
                 <div class="card-body">
                     <h5 class="card-title">Statistics</h5>
                     <p>Members: <strong>{{ $memberCount }}</strong></p>
+                    {{-- <p>Members: <strong>123</strong></p> --}}
                     <p>Certified: <strong>7,929</strong></p>
->>>>>>> Stashed changes
                 </div>
             </div>
         </div>
@@ -104,6 +92,9 @@
                     <p>Platinum: <strong>{{ $platinumCount }}</strong></p>
                     <p>Gold: <strong>{{ $goldCount }}</strong></p>
                     <p>Free: <strong>{{ $freeCount }}</strong></p>
+                    {{-- <p>Platinum: <strong>123</strong></p>
+                    <p>Gold: <strong>123</strong></p>
+                    <p>Free: <strong>123</strong></p> --}}
                     <div style="height: 250px;">
                         <canvas id="packageChart"></canvas>
                     </div>

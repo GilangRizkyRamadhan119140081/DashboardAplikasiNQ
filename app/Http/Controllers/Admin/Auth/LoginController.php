@@ -23,7 +23,8 @@ class LoginController extends Controller
             info($credentials);
             $request->session()->regenerate();
 
-            return view('admin.pages.dashboard.index');
+            // return view('admin.pages.dashboard.index');
+            return redirect()->route('dashboard.index');
         }
 
         return back()->withErrors([
