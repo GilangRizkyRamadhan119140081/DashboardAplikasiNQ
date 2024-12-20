@@ -17,6 +17,11 @@ use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\InboxController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 
+Route::get('/clear', function () {
+  Artisan::call('optimize');;
+  return "Celar Optimize";
+});
+
 
 Route::get('/', [LoginController::class, 'LoginForm'])->name('loginForm');
 
@@ -35,6 +40,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
   Route::get('/user/{id}/edit', [UserController::class, 'UserEdit'])->name('user.edit');
   Route::put('/user/{id}', [UserController::class, 'UserUpdate'])->name('user.update');
   Route::delete('/user/{id}', [UserController::class, 'UserDestroy'])->name('user.destroy');
+  Route::post('/user/{id}/verify-email', [UserController::class, 'verifyEmail'])->name('user.verify.email');
+  
 
   Route::get('/role', [RoleController::class, 'RoleIndex'])->name('role.index');
   Route::get('/role/create', [RoleController::class, 'RoleCreate'])->name('role.create');
@@ -96,6 +103,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
   Route::get('/payment/{id}/edit-status', [PaymentController::class, 'editStatus'])->name('payment.editStatus');
   Route::put('/payment/{id}/update-status', [PaymentController::class, 'updateStatus'])->name('payment.updateStatus');
   
+
+
 
   
 
